@@ -1,11 +1,9 @@
 import React from "react"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "../components/layout";
 
-const Home = () => (
-  <Layout>
-    <SEO />
-  </Layout>
-)
-
-export default Home
+export default function Home() {
+  return (
+    <Layout>
+    </Layout>
+  );
+}

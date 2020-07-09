@@ -32,8 +32,7 @@ function SEO({ description, lang, meta, title }) {
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate= "Inhouse Orders - Custom Online Ordering Sites"
+      title= "Inhouse Orders - Custom Online Ordering Sites"
       meta={[
         {
           name: `description`,
