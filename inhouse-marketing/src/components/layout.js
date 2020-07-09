@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Navbar from "../components/navBar"
 import "./style/layout.css"
 import SEO from "./seo"
-import "./style/style.css"
+import "./style/style.scss"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
