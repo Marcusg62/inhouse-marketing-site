@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../components/layout";
-// import "../components/style/Pricing.css"
+import "../components/style/pricing.css"
 
 
 const pricing = () => {
