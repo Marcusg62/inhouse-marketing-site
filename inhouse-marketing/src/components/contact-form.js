@@ -16,7 +16,7 @@ export default class ContactForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
+        <label for="name">
           Name
           <input
             type="text"
@@ -25,7 +25,7 @@ export default class ContactForm extends React.Component {
             onChange={this.handleInputChange}
           />
         </label><br />
-        <label>
+        <label for="phone">
           Phone
           <input
             type="text"
@@ -34,7 +34,7 @@ export default class ContactForm extends React.Component {
             onChange={this.handleInputChange}
           />
         </label><br />
-        <label>
+        <label for="email">
           Email
           <input
             type="text"
@@ -43,7 +43,7 @@ export default class ContactForm extends React.Component {
             onChange={this.handleInputChange}
           />
         </label><br />
-        <label>
+        <label for="message">
           Message
           <textarea
             type="text"

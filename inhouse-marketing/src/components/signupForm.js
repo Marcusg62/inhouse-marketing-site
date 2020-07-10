@@ -14,7 +14,7 @@ export default class SignupForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
+        <label for="restaurantName" >
           Restaurant Name
           <input
             type="text"
@@ -22,8 +22,8 @@ export default class SignupForm extends React.Component {
             value={this.state.restaurantName}
             onChange={this.handleInputChange}
           />
-        </label><br />
-        <label>
+        </label ><br />
+        <label for="restaurantAddress">
           Restaurant Address
           <input
             type="text"
@@ -31,9 +31,9 @@ export default class SignupForm extends React.Component {
             value={this.state.restaurantAddress}
             onChange={this.handleInputChange}
           />
-        </label><br />
+        </label ><br />
 
-        <button type="submit">Submit</button>
+        <button type="submit">Next</button>
       </form>
     )
   }
