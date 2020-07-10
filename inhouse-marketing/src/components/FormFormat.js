@@ -4,12 +4,12 @@ import SignupForm from "./signupForm"
 
 export default class FormFormat extends React.Component {
 
-  handleInputChange = event => {
+  handleInputChange = (event, formObj) => {
     const target = event.target
     const value = target.value
     const name = target.name
 
-    this.setState({
+    formObj.setState({
       [name]: value,
     })
   }
@@ -28,8 +28,8 @@ export default class FormFormat extends React.Component {
   render() {
     return (
       <div>
-          {this.props.isContactForm ? <ContactForm handleInputChange={this.handleContactForm} handleSubmit = {this.handleContactForm}/> 
-          :<SignupForm handleInputChange={this.handleContactForm} handleSubmit = {this.handleSignup}/>
+          {this.props.isContactForm ? <ContactForm handleInputChange={this.handleInputChange} handleSubmit = {this.handleContactForm}/> 
+          :<SignupForm handleInputChange={this.handleInputChange} handleSubmit = {this.handleSignup}/>
           }
       </div>
     )

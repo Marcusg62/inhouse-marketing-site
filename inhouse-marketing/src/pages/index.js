@@ -78,6 +78,7 @@ const Home = () => {
   return (
     <Layout>
         <Formformat isContactForm={true} />
+        <Formformat isContactForm={false} />
       {getHome()}
     </Layout>
   );

@@ -8,7 +8,7 @@ export default class ContactForm extends React.Component {
     message: ""
   }
 
-  handleInputChange = this.props.handleInputChange
+  handleInputChange =(event) => this.props.handleInputChange(event, this)
 
   handleSubmit = this.props.handleSubmit
 
