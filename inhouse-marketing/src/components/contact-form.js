@@ -1,16 +1,24 @@
 import React from "react"
 
+const initialState = {
+  name: "",
+  phone: "",
+  email: "",
+  message: ""
+}
+
+
 export default class ContactForm extends React.Component {
-  state = {
-    name: "",
-    phone: "",
-    email: "",
-    message: ""
-  }
+
+  state = initialState
 
   handleInputChange =(event) => this.props.handleInputChange(event, this)
 
-  handleSubmit = (event) => this.props.handleSubmit(event, this)
+  handleSubmit = (event) => {
+    this.props.handleSubmit(event, this)
+    this.setState(initialState)
+    this.state = initialState
+  }
 
 
   render() {
