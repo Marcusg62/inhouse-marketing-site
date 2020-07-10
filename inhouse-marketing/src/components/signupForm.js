@@ -1,14 +1,19 @@
 import React from "react"
 
+const initialState = {
+  restaurantName: "",
+  restaurantAddress: "",
+}
+
 export default class SignupForm extends React.Component {
-  state = {
-    restaurantName: "",
-    restaurantAddress: "",
-  }
+  state = initialState
 
   handleInputChange =(event) => this.props.handleInputChange(event, this)
 
-  handleSubmit = (event) => this.props.handleSubmit(event, this)
+  handleSubmit = (event) => {
+    this.props.handleSubmit(event, this)
+    this.setState(initialState)
+  }
 
 
   render() {
