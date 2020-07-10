@@ -19,9 +19,9 @@ export default class FormFormat extends React.Component {
     console.log(formObj.state)
   }
 
-  handleSignup = event => {
+  handleSignup = (event, formObj) => {
     event.preventDefault()
-    console.log("You just signed up with these information:",this.state)
+    console.log("You just signed up with these information:",formObj.state)
   }
 
 

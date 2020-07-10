@@ -6,9 +6,9 @@ export default class SignupForm extends React.Component {
     restaurantAddress: "",
   }
 
-  handleInputChange = this.props.handleInputChange
+  handleInputChange =(event) => this.props.handleInputChange(event, this)
 
-  handleSubmit = this.props.handleSubmit
+  handleSubmit = (event) => this.props.handleSubmit(event, this)
 
 
   render() {
