@@ -10,7 +10,7 @@ export default class ContactForm extends React.Component {
 
   handleInputChange =(event) => this.props.handleInputChange(event, this)
 
-  handleSubmit = this.props.handleSubmit
+  handleSubmit = (event) => this.props.handleSubmit(event, this)
 
 
   render() {
