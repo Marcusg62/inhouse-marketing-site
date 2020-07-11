@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../components/layout";
 import FormFormat from "../components/Formformat";
+import RestaurantInfo from "../components/signupComponents/restaurantInfo";
 // import "../components/style/signUp.css"
 
 export default class signUp extends React.Component {
@@ -32,6 +33,7 @@ export default class signUp extends React.Component {
     this.setState({
       [input]: e.target.value
     })
+    console.log(this.state)
   }
   
   render(){
@@ -41,7 +43,7 @@ export default class signUp extends React.Component {
 
     switch (step) {
       case 1:
-        return <h1>step 1</h1>
+        return <RestaurantInfo values = {values} handleChange = {this.handleChange}/>
 
       case 2:
         return <h1>step 2</h1>
