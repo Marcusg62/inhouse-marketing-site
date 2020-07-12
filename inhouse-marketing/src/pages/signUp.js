@@ -3,6 +3,7 @@ import Layout from "../components/layout";
 import FormFormat from "../components/Formformat";
 import RestaurantInfo from "../components/signupComponents/restaurantInfo";
 import UserInfo from "../components/signupComponents/userInfo";
+import AfterSubmit from "../components/signupComponents/afterSubmit";
 // import "../components/style/signUp.css"
 
 export default class signUp extends React.Component {
@@ -47,13 +48,13 @@ export default class signUp extends React.Component {
     console.log(this.state)
     this.setState({
       signupSuccess: true
-    })
+    }, () => this.next())
   }
   
   render(){
     const { step } = this.state
-    const { restaurantName, restaurantAddress, name, phone } = this.state
-    const values = { restaurantName, restaurantAddress, name, phone }
+    const { restaurantName, restaurantAddress, name, phone,signupSuccess } = this.state
+    const values = { restaurantName, restaurantAddress, name, phone,signupSuccess }
 
     switch (step) {
       case 1:
@@ -80,7 +81,7 @@ export default class signUp extends React.Component {
         )
       
       case 3:
-        return <h1>success!</h1>
+        return <AfterSubmit signupSuccess = {values.signupSuccess}/>
     }
   }
 
