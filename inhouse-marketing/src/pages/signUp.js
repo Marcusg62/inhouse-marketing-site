@@ -11,7 +11,8 @@ export default class signUp extends React.Component {
     restaurantName: "",
     restaurantAddress: "",
     name: "",
-    phone:""  
+    phone:"",
+    signupSuccess: false  
   }
 
   // process to next step
@@ -37,6 +38,17 @@ export default class signUp extends React.Component {
     })
     console.log(this.state)
   }
+
+  //handle form submit
+  handleSubmit = () =>{
+    //connect to the database, depending on the returned state, 
+    //will change the state.signupSuccess to be true
+    //and then render success component
+    console.log(this.state)
+    this.setState({
+      signupSuccess: true
+    })
+  }
   
   render(){
     const { step } = this.state
@@ -60,8 +72,9 @@ export default class signUp extends React.Component {
           <Layout>
           <UserInfo 
           values = {values} 
-          handleChangegit = {this.handleChange}
-          next = {this.next}
+          handleChange = {this.handleChange}
+          back = {this.back}
+          handleSubmit = {this.handleSubmit}
           />
         </Layout>
         )
