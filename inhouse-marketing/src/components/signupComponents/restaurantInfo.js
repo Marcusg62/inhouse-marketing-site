@@ -1,7 +1,7 @@
 import React from "react"
 
 const RestaurantInfo = props =>{
-  const { values, handleChange } = props
+  const { values, handleChange, next, back } = props
   return(
       <>
         <label for="restaurantName" >
@@ -23,7 +23,7 @@ const RestaurantInfo = props =>{
           />
         </label ><br />
 
-        <button type="submit">Next</button>
+        <button onClick={next}>Next</button>
     </>
   )
 

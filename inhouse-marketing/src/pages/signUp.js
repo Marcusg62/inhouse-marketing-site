@@ -14,19 +14,19 @@ export default class signUp extends React.Component {
   }
 
   // process to next step
-  next = function(){
-    const {step} = this.state
-    this.setState({
-      step: step+1
-    })
+  next = () => {
+    // update state.step by adding to previous state
+    this.setState(prevState => {
+      return {step: prevState.step + 1
+    }})
   }
   
   // process to previous step
-  back = function(){
-    const {step} = this.state
-    this.setState({
-      step: step-1
-    })
+  back = () => {
+    // update state.step by minus 1 from previous state
+    this.setState(prevState => {
+      return {step: prevState.step - 1
+    }})
   }
 
   handleChange = input => e => {
@@ -43,7 +43,12 @@ export default class signUp extends React.Component {
 
     switch (step) {
       case 1:
-        return <RestaurantInfo values = {values} handleChange = {this.handleChange}/>
+        return <RestaurantInfo 
+          values = {values} 
+          handleChange = {this.handleChange}
+          next = {this.next}
+          back = {this.back}  
+          />
 
       case 2:
         return <h1>step 2</h1>
