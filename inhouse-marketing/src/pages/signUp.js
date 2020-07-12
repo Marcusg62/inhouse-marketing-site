@@ -29,7 +29,8 @@ export default class signUp extends React.Component {
       return {step: prevState.step - 1
     }})
   }
-
+ 
+  //handle all the field changes
   handleChange = input => e => {
     this.setState({
       [input]: e.target.value
@@ -44,18 +45,26 @@ export default class signUp extends React.Component {
 
     switch (step) {
       case 1:
-        return <RestaurantInfo 
+        return (
+        <Layout>
+          <RestaurantInfo 
           values = {values} 
           handleChange = {this.handleChange}
           next = {this.next}
           />
+        </Layout>
+        )
 
       case 2:
-        return <UserInfo 
+        return (
+          <Layout>
+          <UserInfo 
           values = {values} 
-          handleChange = {this.handleChange}
+          handleChangegit = {this.handleChange}
           next = {this.next}
           />
+        </Layout>
+        )
       
       case 3:
         return <h1>success!</h1>
@@ -63,20 +72,4 @@ export default class signUp extends React.Component {
   }
 
 }
-
-
-// const signUp = () => {
-//   const renderSignUp = () => {
-//     return (
-//         <div>
-//           <FormFormat isContactForm={false} />
-//         </div>
-//     )}
-
-//   return (
-//     <Layout>
-//       {renderSignUp()}
-//     </Layout>
-//   );
-// }
 
