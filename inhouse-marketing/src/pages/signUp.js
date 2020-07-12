@@ -47,7 +47,6 @@ export default class signUp extends React.Component {
           values = {values} 
           handleChange = {this.handleChange}
           next = {this.next}
-          back = {this.back}  
           />
 
       case 2:
