@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/layout";
 import FormFormat from "../components/Formformat";
 import RestaurantInfo from "../components/signupComponents/restaurantInfo";
+import UserInfo from "../components/signupComponents/userInfo";
 // import "../components/style/signUp.css"
 
 export default class signUp extends React.Component {
@@ -50,7 +51,14 @@ export default class signUp extends React.Component {
           />
 
       case 2:
-        return <h1>step 2</h1>
+        return <UserInfo 
+          values = {values} 
+          handleChange = {this.handleChange}
+          next = {this.next}
+          />
+      
+      case 3:
+        return <h1>success!</h1>
     }
   }
 
