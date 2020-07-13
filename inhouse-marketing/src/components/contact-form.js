@@ -12,10 +12,19 @@ export default class ContactForm extends React.Component {
 
   state = initialState
 
-  handleInputChange =(event) => this.props.handleInputChange(event, this)
+  handleInputChange = (event) => {
+    const target = event.target
+    const value = target.value
+    const name = target.name
+
+    this.setState({
+      [name]: value,
+    })
+  }
 
   handleSubmit = (event) => {
-    this.props.handleSubmit(event, this)
+    event.preventDefault()
+    console.log(this.state)
     this.setState(initialState)
   }
 

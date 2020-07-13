@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout";
 import "../components/style/home.css"
-import Formformat from "../components/Formformat";
+import ContactForm from "../components/contact-form";
 
 
 const Home = () => {
@@ -77,8 +77,7 @@ const Home = () => {
 
   return (
     <Layout>
-        <Formformat isContactForm={true} />
-        <Formformat isContactForm={false} />
+      <ContactForm />
       {getHome()}
     </Layout>
   );
