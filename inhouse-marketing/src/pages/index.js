@@ -77,7 +77,6 @@ const Home = () => {
 
   return (
     <Layout>
-      <ContactForm />
       {getHome()}
     </Layout>
   );

@@ -1,5 +1,6 @@
 import React from "react"
 import Layout from "../components/layout";
+import ContactForm from "../components/contact-form";
 // import "../components/style/getStarted.css"
 
 
@@ -14,6 +15,7 @@ const getStarted = () => {
          <h3 className="fs-48">We are working on a great onboarding experience.</h3>
          <p className="fs-24 m-t-24">In the mean time, contact us directly to get started. </p>
          <p className="fs-18 sans">info@inhouseorders.io. </p>
+         <ContactForm />
      </div>
     )}
 

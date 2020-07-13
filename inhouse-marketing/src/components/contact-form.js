@@ -1,4 +1,5 @@
 import React from "react"
+import{ TextField, Button} from '@material-ui/core';
 
 const initialState = {
   name: "",
@@ -15,7 +16,7 @@ export default class ContactForm extends React.Component {
   handleInputChange = (event) => {
     const target = event.target
     const value = target.value
-    const name = target.name
+    const name = target.id
 
     this.setState({
       [name]: value,
@@ -32,43 +33,58 @@ export default class ContactForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label for="name">
-          Name
-          <input
+          <TextField
+            label="Name"
+            size="small"
             type="text"
-            name="name"
+            variant="outlined"
+            margin="normal"
+            id="name"
             value={this.state.name}
             onChange={this.handleInputChange}
           />
-        </label><br />
-        <label for="phone">
-          Phone
-          <input
-            type="text"
-            name="phone"
+        <br />
+        <TextField
+            label="Phone"
+            size="small"
+            type="number"
+            variant="outlined"
+            id="phone"
             value={this.state.phone}
+            margin="normal"
             onChange={this.handleInputChange}
           />
-        </label><br />
-        <label for="email">
-          Email
-          <input
+        <br />
+        <TextField
+            label="Email"
+            size="small"
             type="text"
-            name="email"
+            variant="outlined"
+            id="email"
             value={this.state.email}
+            margin="normal"
             onChange={this.handleInputChange}
           />
-        </label><br />
-        <label for="message">
-          Message
-          <textarea
-            type="text"
-            name="message"
+        <br />
+        <TextField
+            label="Message"
+            size="medium"
+            variant="outlined"
+            id="message"
             value={this.state.message}
+            margin="normal"
             onChange={this.handleInputChange}
+            multiline
           />
-        </label><br />
-        <button type="submit">Submit</button>
+        <br />
+        <Button 
+           type="submit" 
+           variant="contained" 
+           color="primary"
+           size="small"
+           fullWidth
+           >Submit
+        </Button>
       </form>
     )
   }
