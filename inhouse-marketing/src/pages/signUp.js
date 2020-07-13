@@ -1,6 +1,5 @@
 import React from "react"
 import Layout from "../components/layout";
-import FormFormat from "../components/Formformat";
 import RestaurantInfo from "../components/signupComponents/restaurantInfo";
 import UserInfo from "../components/signupComponents/userInfo";
 import AfterSubmit from "../components/signupComponents/afterSubmit";
@@ -59,30 +58,35 @@ export default class signUp extends React.Component {
     switch (step) {
       case 1:
         return (
-        <Layout>
-          <RestaurantInfo 
-          values = {values} 
-          handleChange = {this.handleChange}
-          next = {this.next}
-          />
-        </Layout>
+          <Layout>
+            <RestaurantInfo 
+              values = {values} 
+              handleChange = {this.handleChange}
+              next = {this.next}
+            />
+          </Layout>
         )
 
       case 2:
         return (
           <Layout>
-          <UserInfo 
-          values = {values} 
-          handleChange = {this.handleChange}
-          back = {this.back}
-          handleSubmit = {this.handleSubmit}
-          />
-        </Layout>
+            <UserInfo 
+              values = {values} 
+              handleChange = {this.handleChange}
+              back = {this.back}
+              handleSubmit = {this.handleSubmit}
+            />
+          </Layout>
         )
       
       case 3:
-        return <AfterSubmit signupSuccess = {values.signupSuccess}/>
-    }
+        return (
+          <Layout>
+            <AfterSubmit 
+              signupSuccess = {values.signupSuccess}
+            />
+          </Layout>
+        )}
   }
 
 }

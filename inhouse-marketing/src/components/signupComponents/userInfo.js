@@ -1,7 +1,7 @@
 import React from "react"
 
 const UserInfo = props =>{
-  const { values, handleChange, handleSubmit, back, next } = props
+  const { values, handleChange, handleSubmit, back} = props
   return(
       <>
         <label for="name" >
