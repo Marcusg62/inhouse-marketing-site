@@ -1,4 +1,5 @@
 import React from "react"
+import { Stepper, Step } from "@material-ui/core"
 
 const UserInfo = props =>{
   const { values, handleChange, handleSubmit, back} = props
