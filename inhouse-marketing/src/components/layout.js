@@ -4,6 +4,7 @@ import Navbar from "../components/navBar"
 import "./style/layout.css"
 import SEO from "./seo"
 import "./style/style.scss"
+import "./style/util.scss"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
