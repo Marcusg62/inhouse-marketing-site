@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from "@material-ui/core/MenuItem"
-import { indigo } from '@material-ui/core/colors';
+import { Menu } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +24,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavBar() {
   const classes = useStyles();
+  const [open, setOpen] = useState(false)
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClick = (e) =>{
+    setOpen(!open)
+    setAnchorEl(document.querySelector('header'))
+  }
+  const handleMenuClose = () => {
+    setOpen(!open)
+    setAnchorEl(null)
+  }
 
   return (
     <AppBar position="static" className={classes.root}>
@@ -32,8 +42,27 @@ export default function NavBar() {
           Inhouse Orders
         </Typography>
         <IconButton edge="false" className={classes.menuButton} color="inherit" aria-label="menu">
-          <MenuIcon />
+          <MenuIcon onClick={(e)=>handleClick(e)}/>
         </IconButton>
+        <Menu
+          className={classes.menu}
+          open={open}
+          onClose={handleMenuClose}
+          getContentAnchorEl={null}
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+          >
+          <MenuItem>1</MenuItem>
+          <MenuItem>2</MenuItem>
+          <MenuItem>3</MenuItem>
+        </Menu>
       </Toolbar>
     </AppBar>
   );
