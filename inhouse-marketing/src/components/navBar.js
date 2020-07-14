@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from "@material-ui/core/MenuItem"
 import { Menu } from '@material-ui/core';
+import { Link } from "gatsby"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,9 +60,10 @@ export default function NavBar() {
             horizontal: 'center',
           }}
           >
-          <MenuItem>1</MenuItem>
-          <MenuItem>2</MenuItem>
-          <MenuItem>3</MenuItem>
+          <Link to="/"><MenuItem>Home</MenuItem></Link>
+          <Link to="/process"><MenuItem>How it works</MenuItem></Link>
+          <Link to="/pricing"><MenuItem>Pricing</MenuItem></Link>
+          <Link to="/getStarted"><MenuItem>Get started</MenuItem></Link>
         </Menu>
       </Toolbar>
     </AppBar>
