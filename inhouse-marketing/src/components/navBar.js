@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from "@material-ui/core/MenuItem"
-import { Menu, Drawer, List, ListItem } from '@material-ui/core';
+import {Drawer, List, ListItem } from '@material-ui/core';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { Link } from "gatsby"
 
@@ -17,9 +17,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: "#e8eaf6",
     color: "black"
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
   },
   title: {
     flexGrow: 1
@@ -35,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
   },
@@ -44,16 +40,9 @@ const useStyles = makeStyles((theme) => ({
 export default function NavBar() {
   const classes = useStyles();
   const [open, setOpen] = useState(false)
-  const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (e) =>{
     setOpen(!open)
-    setAnchorEl(document.querySelector('header'))
   }
-  const handleMenuClose = () => {
-    setOpen(!open)
-    setAnchorEl(null)
-  }
-
   const handleDrawerClose = () =>{
     setOpen(false)
   }
@@ -68,46 +57,26 @@ export default function NavBar() {
           <MenuIcon onClick={(e)=>handleClick(e)}/>
         </IconButton>
         <Drawer
-          className={classes.drawer}
-          variant="persistent"
-          anchor="top"
-          open={open}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-      >
-        <div >
-          <IconButton onClick={handleDrawerClose}>
-            <KeyboardArrowUpIcon />
-          </IconButton>
-        </div>
-        <List>
-          <ListItem><Link to="/"><MenuItem>Home</MenuItem></Link></ListItem>
-          <ListItem><Link to="/process"><MenuItem>How it works</MenuItem></Link></ListItem>
-          <ListItem><Link to="/pricing"><MenuItem>Pricing</MenuItem></Link></ListItem>
-          <ListItem><Link to="/getStarted"><MenuItem>Get started</MenuItem></Link></ListItem>
-        </List>
-      </Drawer>
-        {/* <Menu
-          className={classes.menu}
-          open={open}
-          onClose={handleMenuClose}
-          getContentAnchorEl={null}
-          anchorEl={anchorEl}
-          anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'left',
-          }}
-          transformOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
-          }}
-          >
-          <Link to="/"><MenuItem>Home</MenuItem></Link>
-          <Link to="/process"><MenuItem>How it works</MenuItem></Link>
-          <Link to="/pricing"><MenuItem>Pricing</MenuItem></Link>
-          <Link to="/getStarted"><MenuItem>Get started</MenuItem></Link>
-        </Menu> */}
+            className={classes.drawer}
+            variant="persistent"
+            anchor="top"
+            open={open}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+        >
+          <div >
+            <IconButton onClick={handleDrawerClose}>
+              <KeyboardArrowUpIcon />
+            </IconButton>
+          </div>
+          <List>
+            <ListItem><Link to="/"><MenuItem>Home</MenuItem></Link></ListItem>
+            <ListItem><Link to="/process"><MenuItem>How it works</MenuItem></Link></ListItem>
+            <ListItem><Link to="/pricing"><MenuItem>Pricing</MenuItem></Link></ListItem>
+            <ListItem><Link to="/getStarted"><MenuItem>Get started</MenuItem></Link></ListItem>
+          </List>
+       </Drawer>
       </Toolbar>
     </AppBar>
   );
