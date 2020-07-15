@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import RestaurantInfo from "../components/signupComponents/restaurantInfo";
 import UserInfo from "../components/signupComponents/userInfo";
 import AfterSubmit from "../components/signupComponents/afterSubmit";
+import Layout from "../components/layout";
 
 const useStyles = makeStyles(theme => ({
   form: {
@@ -84,7 +85,7 @@ const MultiStep = () => {
     return errors;
   };
   return (
-    <>
+    <Layout>
       <Formik
         enableReinitialize
         initialValues={{ ...formData }}
@@ -97,7 +98,7 @@ const MultiStep = () => {
           </Form>
         )}
       </Formik>
-    </>
+    </Layout>
   );
 };
 
