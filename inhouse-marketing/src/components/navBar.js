@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from "@material-ui/core/MenuItem"
 import { Menu, Drawer, List, ListItem } from '@material-ui/core';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { Link } from "gatsby"
 
 
@@ -76,9 +76,9 @@ export default function NavBar() {
             paper: classes.drawerPaper,
           }}
       >
-        <div className={classes.drawerHeader}>
+        <div >
           <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
+            <KeyboardArrowUpIcon />
           </IconButton>
         </div>
         <List>
