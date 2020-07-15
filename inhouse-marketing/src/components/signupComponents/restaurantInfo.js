@@ -9,21 +9,24 @@ const RestaurantInfo = props =>{
         <TextField
           label="Restaurant Name"
           variant="filled"
-          values={values.restaurantName}
+          defaultValue={values.restaurantName}
           onChange={handleChange}
+          name="restaurantName"
         /><br />
         <TextField
           label="Restaurant Address"
           variant="filled"
           values={values.restaurantAddress}
+          defaultValue={values.restaurantAddress}
           onChange={handleChange}
+          name="restaurantAddress"
         /> <br />       
-        <Button 
+        <button
           onClick={next} 
           variant="contained"
           color="primary"
         >Next
-        </Button>
+        </button>
     </>
   )
 
