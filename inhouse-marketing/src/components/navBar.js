@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#e8eaf6",
     color: "black"
   },
-  title
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -46,10 +45,9 @@ export default function NavBar() {
   }
 
   return (
-    <AppBar position="static" className={classes.root}>
+    <AppBar position="static"  className={classes.root}>
       <Toolbar>
         <Grid container
-          justify="space-between"
         >
           <Grid item xs={10}>
             <Typography variant="h5" className={classes.title}>
@@ -58,12 +56,14 @@ export default function NavBar() {
           </Grid>
 
           <Grid item xs={2}>
-            <IconButton edge="false" className={classes.menuButton} color="inherit" aria-label="menu">
-              <MenuIcon onClick={(e)=>handleClick(e)}/>
-            </IconButton>
+            {/* <IconButton edge="false"  color="inherit" aria-label="menu"> */}
+              <MenuIcon className={classes.menuButton} onClick={(e)=>handleClick(e)}/>
+
           </Grid>
         </Grid>
-        <Drawer
+      </Toolbar>
+
+      <Drawer
             className={classes.drawer}
             variant="persistent"
             anchor="top"
@@ -84,7 +84,6 @@ export default function NavBar() {
             <ListItem><Link to="/getStarted"><MenuItem>Get started</MenuItem></Link></ListItem>
           </List>
        </Drawer>
-      </Toolbar>
     </AppBar>
   );
 }
