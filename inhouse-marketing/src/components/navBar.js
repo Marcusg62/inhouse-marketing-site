@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from "@material-ui/core/MenuItem"
-import {Drawer, List, ListItem } from '@material-ui/core';
+import {Drawer, List, ListItem, Grid } from '@material-ui/core';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { Link } from "gatsby"
 
@@ -18,9 +18,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#e8eaf6",
     color: "black"
   },
-  title: {
-    flexGrow: 1
-  },
+  title
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -50,12 +48,21 @@ export default function NavBar() {
   return (
     <AppBar position="static" className={classes.root}>
       <Toolbar>
-        <Typography variant="h5" className={classes.title}>
-          Inhouse Orders
-        </Typography>
-        <IconButton edge="false" className={classes.menuButton} color="inherit" aria-label="menu">
-          <MenuIcon onClick={(e)=>handleClick(e)}/>
-        </IconButton>
+        <Grid container
+          justify="space-between"
+        >
+          <Grid item xs={10}>
+            <Typography variant="h5" className={classes.title}>
+              Inhouse Orders
+            </Typography>
+          </Grid>
+
+          <Grid item xs={2}>
+            <IconButton edge="false" className={classes.menuButton} color="inherit" aria-label="menu">
+              <MenuIcon onClick={(e)=>handleClick(e)}/>
+            </IconButton>
+          </Grid>
+        </Grid>
         <Drawer
             className={classes.drawer}
             variant="persistent"
