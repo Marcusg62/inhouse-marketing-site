@@ -5,6 +5,7 @@ import RestaurantInfo from "../components/signupComponents/restaurantInfo";
 import UserInfo from "../components/signupComponents/userInfo";
 import AfterSubmit from "../components/signupComponents/afterSubmit";
 import Layout from "../components/layout";
+import {Stepper, Step, StepLabel} from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   form: {
@@ -72,6 +73,11 @@ const MultiStep = () => {
       console.log(values)
   }
 
+  const steps = [
+      'Restaurant information', 
+      'User information', 
+      'Done!'];
+
   const validate = values => {
     const errors = {};
     if (!values.restaurantName) {
@@ -86,6 +92,13 @@ const MultiStep = () => {
   };
   return (
     <Layout>
+      <Stepper activeStep={step-1} alternativeLabel>
+        {steps.map((label) => (
+          <Step key={label}>
+            <StepLabel>{label}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>     
       <Formik
         enableReinitialize
         initialValues={{ ...formData }}

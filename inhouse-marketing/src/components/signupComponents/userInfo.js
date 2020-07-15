@@ -21,12 +21,12 @@ const UserInfo = props =>{
           onChange={handleChange}
           name="phone"
         /> <br />       
-        <button 
+        <Button
           onClick={back} 
           variant="contained"
           color="primary"
         >Back
-        </button>
+        </Button>
 
         <Button 
           onClick={handleSubmit} 

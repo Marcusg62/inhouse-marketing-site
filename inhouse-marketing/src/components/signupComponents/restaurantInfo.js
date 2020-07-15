@@ -21,12 +21,12 @@ const RestaurantInfo = props =>{
           onChange={handleChange}
           name="restaurantAddress"
         /> <br />       
-        <button
+        <Button
           onClick={next} 
           variant="contained"
           color="primary"
         >Next
-        </button>
+        </Button>
     </>
   )
 
