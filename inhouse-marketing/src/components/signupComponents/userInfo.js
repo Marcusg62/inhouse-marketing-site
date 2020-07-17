@@ -1,5 +1,5 @@
 import React from "react"
-import { TextField } from '@material-ui/core'
+import { TextField, ButtonGroup } from '@material-ui/core'
 import {Button} from '@material-ui/core'
 
 const UserInfo = props =>{
@@ -7,33 +7,36 @@ const UserInfo = props =>{
   return(
       <>
        <TextField
-          label="name"
-          variant="filled"
+          label="Name"
+          variant="outlined"
           defaultValue={values.name}
           onChange={handleChange}
           name="name"
         /><br />
         <TextField
           label="Phone"
-          variant="filled"
+          variant="outlined"
           values={values.phone}
           defaultValue={values.phone}
           onChange={handleChange}
           name="phone"
-        /> <br />       
-        <Button
-          onClick={back} 
-          variant="contained"
-          color="primary"
-        >Back
-        </Button>
+        /> <br />
 
-        <Button 
-          onClick={handleSubmit} 
-          variant="contained"
-          color="primary"
-        >Submit
-        </Button>         
+        <ButtonGroup variant="contained" >
+          <Button  
+            onClick={back} 
+            variant="contained"
+            color="primary"
+          >Back
+          </Button>
+
+          <Button 
+            onClick={handleSubmit} 
+            variant="contained"
+            color="primary"
+          >Submit
+          </Button>
+        </ButtonGroup>         
     </>
   )
 }

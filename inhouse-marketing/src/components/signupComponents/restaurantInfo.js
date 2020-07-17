@@ -2,20 +2,21 @@ import React from "react"
 import { TextField } from '@material-ui/core'
 import {Button} from '@material-ui/core'
 
+
 const RestaurantInfo = props =>{
   const { values, handleChange, next} = props
   return(
       <>
         <TextField
           label="Restaurant Name"
-          variant="filled"
+          variant="outlined"
           defaultValue={values.restaurantName}
           onChange={handleChange}
           name="restaurantName"
         /><br />
         <TextField
           label="Restaurant Address"
-          variant="filled"
+          variant="outlined"
           values={values.restaurantAddress}
           defaultValue={values.restaurantAddress}
           onChange={handleChange}
