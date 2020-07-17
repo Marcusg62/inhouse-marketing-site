@@ -32,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
   },
+  navBar: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  }
 }));
 
 export default function NavBar() {
@@ -46,21 +50,16 @@ export default function NavBar() {
 
   return (
     <AppBar position="static"  className={classes.root}>
-      <Toolbar>
-        <Grid container
-        >
-          <Grid item xs={10}>
-            <Typography variant="h5" className={classes.title}>
+      <Toolbar className={classes.navBar}>
+        
+            <Typography variant="h5">
               Inhouse Orders
             </Typography>
-          </Grid>
 
-          <Grid item xs={2}>
-            {/* <IconButton edge="false"  color="inherit" aria-label="menu"> */}
-              <MenuIcon className={classes.menuButton} onClick={(e)=>handleClick(e)}/>
 
-          </Grid>
-        </Grid>
+              <MenuIcon onClick={(e)=>handleClick(e)}/>
+
+
       </Toolbar>
 
       <Drawer
