@@ -1,14 +1,16 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { TextField } from '@material-ui/core'
 import {Button} from '@material-ui/core'
 
 
 const RestaurantInfo = props =>{
-  const { values, handleChange, next} = props
+  const { values, handleChange, next, errors} = props
+  console.log(errors)
   return(
       <>
+        
         <TextField
-          label="Restaurant Name"
+          label="restaurantName"
           variant="outlined"
           defaultValue={values.restaurantName}
           onChange={handleChange}

@@ -6,6 +6,7 @@ import UserInfo from "../components/signupComponents/userInfo";
 import AfterSubmit from "../components/signupComponents/afterSubmit";
 import Layout from "../components/layout";
 import {Stepper, Step, StepLabel} from '@material-ui/core'
+import * as Yup from "yup"
 
 const useStyles = makeStyles(theme => ({
   form: {
@@ -20,13 +21,13 @@ const renderStep = (step, values, errors, touched, handleChange, handleSubmit, n
   switch (step) {
     case 1:
         return (
-            <RestaurantInfo 
+          <RestaurantInfo 
             values={values}
             errors={errors} 
             touched={touched}
             handleChange={handleChange}
             next={next}
-            />);
+          />);
     case 2:
         return (
             <UserInfo 
@@ -78,18 +79,17 @@ const MultiStep = () => {
       'User information', 
       'Done!'];
 
-  const validate = values => {
-    const errors = {};
-    if (!values.restaurantName) {
-      errors.restaurantName = "Required";
-    }
-
-    if (!values.restaurantAddress) {
-      errors.restaurantAddress = "Required";
-    }
-
-    return errors;
-  };
+  const SignupSchema = Yup.object().shape({
+    restaurantName: Yup.string()
+      .required('A restaurant name is required'),
+    restaurantAddress: Yup.string()
+      .required('A restaurant address is required'),
+    name: Yup.string()
+      .required('A name is required'),
+    phone: Yup.string()
+      .required('A phone is required')
+      .matches(/^[0-9]{10}$/, 'Must be exactly 10 digits')
+  });
   return (
     <Layout>
       <Stepper activeStep={step-1} alternativeLabel>
@@ -103,7 +103,7 @@ const MultiStep = () => {
         enableReinitialize
         initialValues={{ ...formData }}
         onSubmit={handleSubmit}
-        validate={validate}
+        validationSchema={SignupSchema}
       >
         {({ values, errors, touched, handleChange }) => (
           <Form className={classes.form}>
