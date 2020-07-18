@@ -53,7 +53,7 @@ export default function NavBar() {
       <Toolbar className={classes.navBar}>
         
             <Typography variant="h5">
-              Inhouse Orders
+              <Link to="/">Inhouse Orders</Link>
             </Typography>
 
 
@@ -64,7 +64,6 @@ export default function NavBar() {
 
       <Drawer
             className={classes.drawer}
-            variant="persistent"
             anchor="top"
             open={open}
             classes={{
