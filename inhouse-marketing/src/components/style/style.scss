@@ -51,30 +51,31 @@
 // @include angular-material-theme($inhouse-marketing-theme);
 
 // /* You can add global styles to this file, and also import other style files */
-// .bg-light {
-//   background-color: #faf9f5;
-// }
-// html,
-// body {
-//   height: 100%;
-//   width: 100%;
-//   margin: 0;
-//   padding: 0;
-//   background-color: #f3eedf;
-// }
-// * {
-//   box-sizing: border-box;
-//   font-weight: lighter;
-//   font-family: PlayfairDisplay-Regular, "Helvetica Neue", sans-serif;
-// }
+.bg-light {
+  background-color: #faf9f5;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f3eedf;
+}
+* {
+  box-sizing: border-box;
+  font-weight: lighter;
+  font-family: PlayfairDisplay-Regular, "Helvetica Neue", sans-serif;
+}
 
-// .bg-primary {
-//   background-color: map-get($inhouse-cool, 500);
-//   color: mat-contrast($inhouse-cool, 500);
-// }
-// .text-light {
-//   color: #ffffff;
-// }
+.bg-primary {
+  background-color: black;
+  color: white;
+}
+.text-light {
+  color: #ffffff;
+}
+
 // @font-face {
 //   font-family: Poppins-Regular;
 //   src: url("./assets/fonts/Poppins/Poppins-Regular.ttf");
@@ -100,34 +101,34 @@
 //   src: url("./assets/fonts/PlayfairDisplay/PlayfairDisplay-Italic.ttf");
 // }
 
-// .sans-regular {
-//   font-family: Poppins-Regular, sans-serif;
-// }
+.sans-regular {
+  font-family: Poppins-Regular, sans-serif;
+}
 
-// .sans-bold {
-//   font-family: Poppins-Bold, sans-serif;
-// }
+.sans-bold {
+  font-family: Poppins-Bold, sans-serif;
+}
 
-// a {
-//   color: inherit;
-//   text-decoration: none;
-// }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-// .box {
-//   width: 100%;
-//   border: solid 1px black;
-//   padding: 2rem 1rem;
-//   margin: 2rem 1rem;
-// }
+.box {
+  width: 100%;
+  border: solid 1px black;
+  padding: 2rem 1rem;
+  margin: 2rem 1rem;
+}
 
-// button {
-//   border-radius: 30px !important;
-//   line-height: 40px !important;
-//   text-align: center;
-//   margin: auto;
-// }
+.button-round {
+  border-radius: 30px !important;
+  line-height: 40px !important;
+  text-align: center;
+  margin: auto;
+}
 
-// // button > * {
-// //   font-family: Poppins-Regular, sans-serif !important;
+button > * {
+  font-family: Poppins-Regular, sans-serif !important;
 
-// // }
+}

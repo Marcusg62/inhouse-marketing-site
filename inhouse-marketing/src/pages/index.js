@@ -1,10 +1,18 @@
 import React from "react"
 import Layout from "../components/layout";
 import "../components/style/home.css"
-import ContactForm from "../components/contact-form";
+import firebase from "gatsby-plugin-firebase"
 
 
 const Home = () => {
+
+const db = firebase.firestore()
+db.doc("restaurants/thaiBasil")
+        .get()
+        .then(val => {
+        console.log(val.data())
+        })
+
   const getHome = () => {
     return (
     <>
