@@ -32,6 +32,7 @@ const RestaurantInfo = props =>{
           name="restaurantAddress"
         /> <br />       
         <Button
+          disabled={(!touched.restaurantAddress || !touched.restaurantName) || (restaurantNameHasError || restaurantAddressHasError)}
           onClick={next} 
           variant="contained"
           color="primary"
