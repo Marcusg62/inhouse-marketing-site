@@ -35,7 +35,11 @@ const useStyles = makeStyles((theme) => ({
   navBar: {
     display: 'flex',
     justifyContent: 'space-between'
+  },
+  link: {
+    textDecoration: 'none'
   }
+
 }));
 
 export default function NavBar() {
@@ -53,7 +57,7 @@ export default function NavBar() {
       <Toolbar className={classes.navBar}>
         
             <Typography variant="h5">
-              <Link to="/">Inhouse Orders</Link>
+              <Link to="/" className={classes.link}>Inhouse Orders</Link>
             </Typography>
 
 
@@ -75,11 +79,11 @@ export default function NavBar() {
               <KeyboardArrowUpIcon />
             </IconButton>
           </div>
-          <List>
-            <ListItem><Link to="/"><MenuItem>Home</MenuItem></Link></ListItem>
-            <ListItem><Link to="/process"><MenuItem>How it works</MenuItem></Link></ListItem>
-            <ListItem><Link to="/pricing"><MenuItem>Pricing</MenuItem></Link></ListItem>
-            <ListItem><Link to="/getStarted"><MenuItem>Get started</MenuItem></Link></ListItem>
+          <List >
+            <ListItem><Link to="/" className={classes.link}><MenuItem>Home</MenuItem></Link></ListItem>
+            <ListItem><Link to="/process" className={classes.link}><MenuItem>How it works</MenuItem></Link></ListItem>
+            <ListItem><Link to="/pricing" className={classes.link}><MenuItem>Pricing</MenuItem></Link></ListItem>
+            <ListItem><Link to="/getStarted" className={classes.link}><MenuItem>Get started</MenuItem></Link></ListItem>
           </List>
        </Drawer>
     </AppBar>
