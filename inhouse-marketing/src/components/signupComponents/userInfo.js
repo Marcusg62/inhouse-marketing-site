@@ -1,35 +1,52 @@
 import React from "react"
+import { TextField, ButtonGroup } from '@material-ui/core'
+import {Button} from '@material-ui/core'
 
 const UserInfo = props =>{
-  const { values, handleChange, handleSubmit, back} = props
+  const { values, handleChange, handleSubmit, back,errors, touched, handleBlur} = props
+  const nameHasError = errors.name && touched.name
+  const phoneHasError = errors.phone && touched.phone
   return(
       <>
-        <label for="name" >
-           Name
-          <input
-            type="text"
-            name="name"
-            value={values.name}
-            // to invoke the handleChange method, you need to specify a name to it so that the state will change accordingly
-            onChange={handleChange('name')}
-          />
-        </label ><br />
-        <label for="phone">
-           Phone
-          <input
-            type="text"
-            name="phone"
-            value={values.phone}
-            // to invoke the handleChange method, you need to specify a name to it so that the state will change accordingly
-            onChange={handleChange('phone')}
-          />
-        </label ><br />
+       <TextField
+          error = {nameHasError}
+          label={nameHasError ? "Error" : "name"}
+          helperText={nameHasError ? errors.name : null}
+          onBlur={handleBlur}
+          variant="outlined"
+          defaultValue={values.name}
+          onChange={handleChange}
+          name="name"
+        /><br />
+        <TextField
+          error = {phoneHasError}
+          label={phoneHasError ? "Error" : "phone"}
+          helperText={phoneHasError ? errors.phone : null}
+          onBlur={handleBlur}
+          variant="outlined"
+          values={values.phone}
+          defaultValue={values.phone}
+          onChange={handleChange}
+          name="phone"
+        /> <br />
 
-        <button onClick={back}>Back</button>
-        <button onClick={handleSubmit}>Submit</button>
+        <ButtonGroup variant="contained" >
+          <Button  
+            onClick={back} 
+            variant="contained"
+            color="primary"
+          >Back
+          </Button>
+
+          <Button 
+            disabled={(!touched.name || !touched.phone) || (phoneHasError || nameHasError)}            
+            onClick={handleSubmit} 
+            variant="contained"
+            color="primary"
+          >Submit
+          </Button>
+        </ButtonGroup>         
     </>
   )
-
 }
-
 export default UserInfo;

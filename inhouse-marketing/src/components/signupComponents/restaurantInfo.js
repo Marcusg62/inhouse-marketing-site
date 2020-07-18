@@ -1,31 +1,42 @@
 import React from "react"
+import { TextField } from '@material-ui/core'
+import {Button} from '@material-ui/core'
+
 
 const RestaurantInfo = props =>{
-  const { values, handleChange, next} = props
+  const { values, handleChange, next, errors, touched, handleBlur} = props
+  const restaurantNameHasError = errors.restaurantName && touched.restaurantName
+  const restaurantAddressHasError = errors.restaurantAddress && touched.restaurantAddress
   return(
-      <>
-        <label for="restaurantName" >
-          Restaurant Name
-          <input
-            type="text"
-            name="restaurantName"
-            value={values.restaurantName}
-            // to invoke the handleChange method, you need to specify a name to it so that the state will change accordingly
-            onChange={handleChange('restaurantName')}
-          />
-        </label ><br />
-        <label for="restaurantAddress">
-          Restaurant Address
-          <input
-            type="text"
-            name="restaurantAddress"
-            value={values.restaurantAddress}
-            // to invoke the handleChange method, you need to specify a name to it so that the state will change accordingly
-            onChange={handleChange('restaurantAddress')}
-          />
-        </label ><br />
-
-        <button onClick={next}>Next</button>
+      <>      
+        <TextField
+          error = {restaurantNameHasError}
+          label={restaurantNameHasError ? "Error" : "RestaurantName"}
+          helperText={restaurantNameHasError ? errors.restaurantName : null}
+          variant="outlined"
+          onBlur={handleBlur}
+          defaultValue={values.restaurantName}
+          onChange={handleChange}
+          name="restaurantName"
+        /><br />
+        <TextField
+          error = {restaurantAddressHasError}
+          label={restaurantAddressHasError ? "Error" : "RestaurantAddress"}
+          helperText={restaurantAddressHasError ? errors.restaurantAddress : null}
+          variant="outlined"
+          onBlur={handleBlur}
+          values={values.restaurantAddress}
+          defaultValue={values.restaurantAddress}
+          onChange={handleChange}
+          name="restaurantAddress"
+        /> <br />       
+        <Button
+          disabled={(!touched.restaurantAddress || !touched.restaurantName) || (restaurantNameHasError || restaurantAddressHasError)}
+          onClick={next} 
+          variant="contained"
+          color="primary"
+        >Next
+        </Button>
     </>
   )
 
