@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from "@material-ui/core/MenuItem"
-import {Drawer, List, ListItem, Grid } from '@material-ui/core';
+import {Drawer, List, ListItem} from '@material-ui/core';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { Link } from "gatsby"
 
@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     textDecoration: 'none'
+  },
+  modal:{
+    paddingTop:"50px"
   }
 
 }));
@@ -54,25 +57,20 @@ export default function NavBar() {
 
   return (
     <AppBar position="static"  className={classes.root}>
-      <Toolbar className={classes.navBar}>
-        
-            <Typography variant="h5">
-              <Link to="/" className={classes.link}>Inhouse Orders</Link>
-            </Typography>
-
-
-              <MenuIcon onClick={(e)=>handleClick(e)}/>
-
-
+      <Toolbar className={classes.navBar}>     
+          <Typography variant="h5">
+            <Link to="/" className={classes.link}>Inhouse Orders</Link>
+          </Typography>
+          <MenuIcon onClick={(e)=>handleClick(e)}/>
       </Toolbar>
-
-      <Drawer
+        <Drawer
             className={classes.drawer}
             anchor="top"
             open={open}
             classes={{
               paper: classes.drawerPaper,
             }}
+            onClose={handleDrawerClose}
         >
           <div >
             <IconButton onClick={handleDrawerClose}>
@@ -85,7 +83,7 @@ export default function NavBar() {
             <ListItem><Link to="/pricing" className={classes.link}><MenuItem>Pricing</MenuItem></Link></ListItem>
             <ListItem><Link to="/getStarted" className={classes.link}><MenuItem>Get started</MenuItem></Link></ListItem>
           </List>
-       </Drawer>
+        </Drawer>
     </AppBar>
   );
 }
