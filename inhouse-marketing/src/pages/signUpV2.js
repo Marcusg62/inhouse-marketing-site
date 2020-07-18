@@ -56,7 +56,7 @@ const MultiStep = () => {
     restaurantName: "",
     restaurantAddress: "",
     name: "",
-    phone:"",
+    phone: "",
   }
 
   const next = () => {
@@ -90,7 +90,7 @@ const MultiStep = () => {
       .required('A name is required'),
     phone: Yup.string()
       .required('A phone is required')
-      .matches(/^[0-9]{10}$/, 'Must be exactly 10 digits')
+      .matches(/^[0-9]{10}$/, 'Must be exactly 10 digits number')
   });
   return (
     <Layout>
