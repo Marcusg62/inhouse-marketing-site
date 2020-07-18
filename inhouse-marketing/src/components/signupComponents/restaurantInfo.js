@@ -5,7 +5,6 @@ import {Button} from '@material-ui/core'
 
 const RestaurantInfo = props =>{
   const { values, handleChange, next, errors, touched, handleBlur} = props
-  console.log(errors)
   const restaurantNameHasError = errors.restaurantName && touched.restaurantName
   const restaurantAddressHasError = errors.restaurantAddress && touched.restaurantAddress
   return(
