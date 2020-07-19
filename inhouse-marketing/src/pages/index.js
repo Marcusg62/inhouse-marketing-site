@@ -1,12 +1,11 @@
 import React from "react"
 import Layout from "../components/layout";
 import "../components/style/home.css"
-import firebase from "gatsby-plugin-firebase"
+import {db, auth} from "../firebase/firebaseAuthandDB"
 
 
 const Home = () => {
 
-const db = firebase.firestore()
 db.doc("restaurants/thaiBasil")
         .get()
         .then(val => {
