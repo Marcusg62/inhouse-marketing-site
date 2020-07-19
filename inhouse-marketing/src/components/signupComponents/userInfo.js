@@ -8,8 +8,6 @@ const UserInfo = props =>{
   const { values, handleChange, handleSubmit, back,errors, touched, handleBlur} = props
   const nameHasError = errors.name && touched.name
   const phoneHasError = errors.phone && touched.phone
-  console.log(values)
-
   // function TextMaskCustom(props) {
   //   const { inputRef, ...other } = props;
   
@@ -67,7 +65,7 @@ const UserInfo = props =>{
 
           <Button 
             disabled={(!touched.name || !touched.phone) || (phoneHasError || nameHasError)}            
-            onClick={handleSubmit} 
+            onClick={()=>handleSubmit(values)} 
             variant="contained"
             color="primary"
           >Submit

@@ -6,11 +6,17 @@ import {db, auth} from "../firebase/firebaseService"
 
 const Home = () => {
 
-db.doc("restaurants/thaiBasil")
-        .get()
-        .then(val => {
-        console.log(val.data())
-        })
+// db.doc("restaurants/thaiBasil")
+//         .get()
+//         .then(val => {
+//         console.log(val.data())
+//         })
+
+// // db.collection("onboarding_form_submission").add({
+// //   restaurantName:"123 res"
+// // })
+// // .then((data)=>console.log("here's the data",data))
+// // .catch((error)=>console.log("Here's the error:", error))
 
 
   const getHome = () => {

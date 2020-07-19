@@ -7,6 +7,7 @@ import AfterSubmit from "../components/signupComponents/afterSubmit";
 import Layout from "../components/layout";
 import {Stepper, Step, StepLabel} from '@material-ui/core'
 import SignupSchema from '../components/signupComponents/helpers/validationSchema'
+import { submitOnBoardingForm } from "../firebase/firebaseService";
 
 const useStyles = makeStyles(theme => ({
   form: {
@@ -70,10 +71,14 @@ const MultiStep = () => {
     setStep(s=>s-1)
   }
 
-  const handleSubmit = (values) => {
-      setSignupSuccess(true)
-      next()
-      console.log(values)
+  const handleSubmit = payload => {
+    // delete the step key in the payload,it doesn't have to be saved
+    delete payload.step
+    // connect to the firebase to create a document 
+    submitOnBoardingForm(payload)
+      .then(() => setSignupSuccess(true))
+      .then(() => next())
+      .catch(err => alert(err))
   }
 
   const steps = [
