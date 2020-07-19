@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout";
 import "../components/style/home.css"
-import {db, auth} from "../firebase/firebaseAuthandDB"
+import {db, auth} from "../firebase/firebaseService"
 
 
 const Home = () => {
@@ -11,6 +11,7 @@ db.doc("restaurants/thaiBasil")
         .then(val => {
         console.log(val.data())
         })
+
 
   const getHome = () => {
     return (
