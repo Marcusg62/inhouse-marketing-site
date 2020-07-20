@@ -10,3 +10,8 @@ export const submitOnBoardingForm = (payload) =>{
   return db.collection("onboarding_form_submission").add(payload)
     .then((data)=>console.log("here's the data",data.id))
 }
+
+export const createUser = payload =>{
+    auth.createUserWithEmailAndPassword(payload.email, payload.password).then((data) => alert(data))
+    .catch(err=>console.log("Error!",err.message))
+}

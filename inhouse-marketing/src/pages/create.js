@@ -1,21 +1,20 @@
-import { Formik, Form } from "formik"
+import { Formik, Form, ErrorMessage } from "formik"
 import React from 'react'
 import { TextField, Button } from "@material-ui/core"
+import { createUser } from "../firebase/firebaseService"
+
 
 const initialValues = {
     email: "",
     password:""
 }
 
-function handleSubmit (values){
-  console.log(values)
-}
 
 const createUserWithEmailandPassword = () =>{
     return (
         <Formik 
            initialValues={initialValues}
-           onSubmit={handleSubmit}
+           onSubmit={createUser}
         >
             {({values,handleChange, handleSubmit }) =>{
                 return(    
