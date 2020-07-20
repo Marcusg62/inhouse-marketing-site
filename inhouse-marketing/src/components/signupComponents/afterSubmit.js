@@ -8,6 +8,7 @@ const AfterSubmit = props => {
 const createAccountMethods = () =>{
     return (
       <h1>You submit succesfully! Let's create a user account here.</h1>
+      
     )
   }
 
