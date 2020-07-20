@@ -78,7 +78,7 @@ const MultiStep = () => {
     submitOnBoardingForm(payload)
       .then(() => setSignupSuccess(true))
       .then(() => next())
-      .catch(err => alert(err))
+      .catch(err => alert(err.message))
   }
 
   const steps = [
@@ -89,6 +89,7 @@ const MultiStep = () => {
 
   return (
     <Layout>
+      {/* because my step starting from 1, so activeStep would be my step-1 */}
       <Stepper activeStep={step-1} alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>
@@ -97,8 +98,7 @@ const MultiStep = () => {
         ))}
       </Stepper>     
       <Formik
-        enableReinitialize
-        initialValues={{ ...formData }}
+        initialValues={formData}
         onSubmit={handleSubmit}
         validationSchema={SignupSchema}
       >
