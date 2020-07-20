@@ -16,7 +16,7 @@ const createUserWithEmailandPassword = () =>{
            initialValues={initialValues}
            onSubmit={createUser}
         >
-            {({values,handleChange, handleSubmit }) =>{
+            {({values,handleChange, handleSubmit, errors,touched,handleBlur }) =>{
                 return(    
                 <Form >
                     <TextField

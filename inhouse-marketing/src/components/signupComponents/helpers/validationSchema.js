@@ -12,4 +12,14 @@ const SignupSchema = Yup.object().shape({
       .matches(/^[0-9]{10}$/, 'Must be exactly 10 digits number')
   });
 
-export default SignupSchema
+const createUserSchema =  Yup.object().shape({
+  email: Yup.string()
+    .required('A name is required')
+    .email,
+  password: Yup.string()
+    .required('A phone is required')
+    .min(6)
+});
+
+
+export default {SignupSchema, createUserSchema}
