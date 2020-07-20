@@ -6,7 +6,7 @@ import UserInfo from "../components/signupComponents/userInfo";
 import AfterSubmit from "../components/signupComponents/afterSubmit";
 import Layout from "../components/layout";
 import {Stepper, Step, StepLabel} from '@material-ui/core'
-import SignupSchema from '../components/signupComponents/helpers/validationSchema'
+import {SignupSchema} from '../components/signupComponents/helpers/validationSchema'
 import { submitOnBoardingForm } from "../firebase/firebaseService";
 
 const useStyles = makeStyles(theme => ({

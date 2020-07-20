@@ -1,14 +1,19 @@
 import React from "react"
 import {Link} from "gatsby"
+import createUserForm from "./createUserForm"
 // import "../components/style/signUpSuccess.css"
+
+
 
 
 const AfterSubmit = props => {
 
 const createAccountMethods = () =>{
     return (
-      <h1>You submit succesfully! Let's create a user account here.</h1>
-      
+      <>
+        <h1>You submit succesfully! Let's create a user account here.</h1>
+        {createUserForm()}
+      </>
     )
   }
 
