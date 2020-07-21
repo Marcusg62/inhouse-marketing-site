@@ -17,7 +17,7 @@ export const createUser = payload =>{
     .catch(err=>console.log("Error!",err.message))
 }
 
-export const createUserWithGithub =() =>{
+export const createUserWithGoogle = () =>{
   firebase.auth().signInWithPopup(provider).then(function(result) {
     // This gives you a Google Access Token. You can use it to access the Google API.
     var token = result.credential.accessToken;
@@ -30,3 +30,4 @@ export const createUserWithGithub =() =>{
      console.log(error.message)
   });
 }
+
