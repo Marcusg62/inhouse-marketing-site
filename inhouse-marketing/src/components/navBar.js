@@ -10,7 +10,7 @@ import {Drawer, List, ListItem} from '@material-ui/core';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { Link } from "gatsby"
 import {Accordion, AccordionSummary, AccordionDetails }from '@material-ui/core'
-
+// import Button from "material-dashboard-pro-react-v1.9.0/src/components/CustomButtons/Button"
 
 const drawerWidth = "100%"
 const useStyles = makeStyles((theme) => ({
@@ -62,6 +62,7 @@ export default function NavBar() {
           <Typography variant="h5">
             <Link to="/" className={classes.link}>Inhouse Orders</Link>
           </Typography>
+          {/* <Button color="rose">Rose</Button> */}
           <MenuIcon onClick={(e)=>handleClick(e)}/>
       </Toolbar>
         <Drawer
