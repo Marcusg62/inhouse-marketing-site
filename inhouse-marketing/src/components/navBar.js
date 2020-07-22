@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from "@material-ui/core/MenuItem"
-import {Drawer, List, ListItem} from '@material-ui/core';
+import {Drawer, List, ListItem, Button} from '@material-ui/core';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { Link } from "gatsby"
 import {Accordion, AccordionSummary, AccordionDetails }from '@material-ui/core'
@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
   },
   navBar: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   link: {
     textDecoration: 'none'
@@ -63,7 +64,12 @@ export default function NavBar() {
             <Link to="/" className={classes.link}>Inhouse Orders</Link>
           </Typography>
           {/* <Button color="rose">Rose</Button> */}
-          <MenuIcon onClick={(e)=>handleClick(e)}/>
+          <div>
+            <Button >Sign In</Button>
+            <Button >Sign Out</Button>
+            <Button >My profile</Button>
+            <MenuIcon onClick={(e)=>handleClick(e)}/>
+          </div>
       </Toolbar>
         <Drawer
             className={classes.drawer}
