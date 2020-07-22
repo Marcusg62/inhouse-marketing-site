@@ -10,6 +10,7 @@ import {Drawer, List, ListItem, Button} from '@material-ui/core';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { Link } from "gatsby"
 import {Accordion, AccordionSummary, AccordionDetails }from '@material-ui/core'
+import { signOut } from '../firebase/firebaseService';
 // import Button from "material-dashboard-pro-react-v1.9.0/src/components/CustomButtons/Button"
 
 const drawerWidth = "100%"
@@ -66,7 +67,7 @@ export default function NavBar() {
           {/* <Button color="rose">Rose</Button> */}
           <div>
             <Button >Sign In</Button>
-            <Button >Sign Out</Button>
+            <Button onClick={signOut}>Sign Out</Button>
             <Button >My profile</Button>
             <MenuIcon onClick={(e)=>handleClick(e)}/>
           </div>
