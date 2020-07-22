@@ -1,6 +1,6 @@
 import * as Yup from "yup"
 
-const SignupSchema = Yup.object().shape({
+export const SignupSchema = Yup.object().shape({
     restaurantName: Yup.string()
       .required('A restaurant name is required'),
     restaurantAddress: Yup.string()
@@ -12,4 +12,12 @@ const SignupSchema = Yup.object().shape({
       .matches(/^[0-9]{10}$/, 'Must be exactly 10 digits number')
   });
 
-export default SignupSchema
+export const createUserSchema =  Yup.object().shape({
+    email: Yup.string()
+      .required('A name is required')
+      .email("It is not a valid email format"),
+    password: Yup.string()
+      .required('An password is required')
+      .min(6, "Your password has to be more than 6 digits.")
+  });
+

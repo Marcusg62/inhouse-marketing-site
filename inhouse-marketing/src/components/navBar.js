@@ -6,10 +6,12 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from "@material-ui/core/MenuItem"
-import {Drawer, List, ListItem} from '@material-ui/core';
+import {Drawer, List, ListItem, Button} from '@material-ui/core';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { Link } from "gatsby"
-
+import {Accordion, AccordionSummary, AccordionDetails }from '@material-ui/core'
+import { signOut } from '../firebase/firebaseService';
+// import Button from "material-dashboard-pro-react-v1.9.0/src/components/CustomButtons/Button"
 
 const drawerWidth = "100%"
 const useStyles = makeStyles((theme) => ({
@@ -34,7 +36,8 @@ const useStyles = makeStyles((theme) => ({
   },
   navBar: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   link: {
     textDecoration: 'none'
@@ -61,7 +64,13 @@ export default function NavBar() {
           <Typography variant="h5">
             <Link to="/" className={classes.link}>Inhouse Orders</Link>
           </Typography>
-          <MenuIcon onClick={(e)=>handleClick(e)}/>
+          {/* <Button color="rose">Rose</Button> */}
+          <div>
+            <Button >Sign In</Button>
+            <Button onClick={signOut}>Sign Out</Button>
+            <Button >My profile</Button>
+            <MenuIcon onClick={(e)=>handleClick(e)}/>
+          </div>
       </Toolbar>
         <Drawer
             className={classes.drawer}

@@ -5,9 +5,11 @@ import RestaurantInfo from "../components/signupComponents/restaurantInfo";
 import UserInfo from "../components/signupComponents/userInfo";
 import AfterSubmit from "../components/signupComponents/afterSubmit";
 import Layout from "../components/layout";
-import {Stepper, Step, StepLabel} from '@material-ui/core'
-import SignupSchema from '../components/signupComponents/helpers/validationSchema'
+import {SignupSchema} from '../components/signupComponents/helpers/validationSchema'
 import { submitOnBoardingForm } from "../firebase/firebaseService";
+import renderStepper from "../components/signupComponents/stepper"
+
+
 
 const useStyles = makeStyles(theme => ({
   form: {
@@ -17,6 +19,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center"
   }
 }));
+
 
 const renderStep = (step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back, signupSuccess) => {
   switch (step) {
@@ -78,10 +81,10 @@ const MultiStep = () => {
     submitOnBoardingForm(payload)
       .then(() => setSignupSuccess(true))
       .then(() => next())
-      .catch(err => alert(err))
+      .catch(err => alert(err.message))
   }
 
-  const steps = [
+  const myStepLable = [
       'Restaurant information', 
       'User information', 
       'Done!'];
@@ -89,16 +92,10 @@ const MultiStep = () => {
 
   return (
     <Layout>
-      <Stepper activeStep={step-1} alternativeLabel>
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>     
+      {/* because my step starting from 1, so activeStep would be my step-1 */}
+      {renderStepper(step, myStepLable)}
       <Formik
-        enableReinitialize
-        initialValues={{ ...formData }}
+        initialValues={formData}
         onSubmit={handleSubmit}
         validationSchema={SignupSchema}
       >

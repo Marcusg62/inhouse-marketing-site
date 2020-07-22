@@ -1,8 +1,6 @@
 import React from "react"
 import Layout from "../components/layout";
 import "../components/style/home.css"
-import {db, auth} from "../firebase/firebaseService"
-
 
 const Home = () => {
 
@@ -26,7 +24,6 @@ const Home = () => {
           <h2 className="text-light fs-56 m-b-16 w-700">Online Ordering Customized For Your
               Restaurant</h2>
       </div>
-
       <div className="container bg-light">
           <div className="flex-c">
               <div className="box">
