@@ -6,7 +6,8 @@ import UserInfo from "../components/signupComponents/userInfo";
 import AfterSubmit from "../components/signupComponents/afterSubmit";
 import Layout from "../components/layout";
 import {Stepper, Step, StepLabel} from '@material-ui/core'
-import * as Yup from "yup"
+import SignupSchema from '../components/signupComponents/helpers/validationSchema'
+import { submitOnBoardingForm } from "../firebase/firebaseService";
 
 const useStyles = makeStyles(theme => ({
   form: {
@@ -56,7 +57,7 @@ const MultiStep = () => {
     restaurantName: "",
     restaurantAddress: "",
     name: "",
-    phone:"",
+    phone: "",
   }
 
   const next = () => {
@@ -70,10 +71,14 @@ const MultiStep = () => {
     setStep(s=>s-1)
   }
 
-  const handleSubmit = (values) => {
-      setSignupSuccess(true)
-      next()
-      console.log(values)
+  const handleSubmit = payload => {
+    // delete the step key in the payload,it doesn't have to be saved
+    delete payload.step
+    // connect to the firebase to create a document 
+    submitOnBoardingForm(payload)
+      .then(() => setSignupSuccess(true))
+      .then(() => next())
+      .catch(err => alert(err))
   }
 
   const steps = [
@@ -81,17 +86,7 @@ const MultiStep = () => {
       'User information', 
       'Done!'];
 
-  const SignupSchema = Yup.object().shape({
-    restaurantName: Yup.string()
-      .required('A restaurant name is required'),
-    restaurantAddress: Yup.string()
-      .required('A restaurant address is required'),
-    name: Yup.string()
-      .required('A name is required'),
-    phone: Yup.string()
-      .required('A phone is required')
-      .matches(/^[0-9]{10}$/, 'Must be exactly 10 digits')
-  });
+
   return (
     <Layout>
       <Stepper activeStep={step-1} alternativeLabel>

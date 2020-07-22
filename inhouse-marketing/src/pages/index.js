@@ -1,17 +1,23 @@
 import React from "react"
 import Layout from "../components/layout";
 import "../components/style/home.css"
-import firebase from "gatsby-plugin-firebase"
+import {db, auth} from "../firebase/firebaseService"
 
 
 const Home = () => {
 
-const db = firebase.firestore()
-db.doc("restaurants/thaiBasil")
-        .get()
-        .then(val => {
-        console.log(val.data())
-        })
+// db.doc("restaurants/thaiBasil")
+//         .get()
+//         .then(val => {
+//         console.log(val.data())
+//         })
+
+// // db.collection("onboarding_form_submission").add({
+// //   restaurantName:"123 res"
+// // })
+// // .then((data)=>console.log("here's the data",data))
+// // .catch((error)=>console.log("Here's the error:", error))
+
 
   const getHome = () => {
     return (
