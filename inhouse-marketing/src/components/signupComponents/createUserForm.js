@@ -4,6 +4,7 @@ import { TextField, Button } from "@material-ui/core"
 import { createUser } from "../../firebase/firebaseService"
 import {createUserSchema} from './helpers/validationSchema'
 import { makeStyles } from "@material-ui/styles"
+import { createUserWithGoogle, createUserWithFacebook } from "../../firebase/firebaseService"
 
 const initialValues = {
     email: "",
@@ -24,6 +25,7 @@ const componentStyles = makeStyles(theme => ({
 const createUserForm = () =>{
     const classes = componentStyles();
     return (
+    <>
         <Formik 
            initialValues={initialValues}
            onSubmit={createUser}
@@ -62,8 +64,10 @@ const createUserForm = () =>{
                     </Button>                           
                 </Form>
                 )}}
-
         </Formik>
+        <Button onClick={createUserWithGoogle} variant="contained" >Sign in with Google</Button>
+        <Button onClick={createUserWithFacebook} variant="contained">Sign in with Facebook</Button>        
+    </>
     )
 }
 
