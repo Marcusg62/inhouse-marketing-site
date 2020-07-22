@@ -1,9 +1,24 @@
 //This document will handle everything to connect with firebase database or authetication
 import firebase from "gatsby-plugin-firebase"
-var provider = new firebase.auth.GoogleAuthProvider();
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
 const auth = firebase.auth()
 const db = firebase.firestore()
+
+const creditialsWithPopup = provider =>{
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    var token = result.credential.accessToken;
+    // The signed-in user info.
+    var user = result.user;
+    // ...
+    console.log(token)
+    console.log(user)
+  }).catch(function(error) {
+     console.log(error.message)
+  });
+}
 
 export const submitOnBoardingForm = (payload) =>{
     //return a promise to handleSubmit, dont catch the error, or handleSubmit would
@@ -18,16 +33,9 @@ export const createUser = payload =>{
 }
 
 export const createUserWithGoogle = () =>{
-  firebase.auth().signInWithPopup(provider).then(function(result) {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    var token = result.credential.accessToken;
-    // The signed-in user info.
-    var user = result.user;
-    // ...
-    console.log(token)
-    console.log(user)
-  }).catch(function(error) {
-     console.log(error.message)
-  });
+  creditialsWithPopup(googleProvider)
 }
 
+export const createUserWithFacebook = () => {
+  creditialsWithPopup(facebookProvider)
+}

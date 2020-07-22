@@ -2,7 +2,7 @@ import React from "react"
 import {Link} from "gatsby"
 import createUserForm from "./createUserForm"
 import { Button } from "@material-ui/core"
-import { createUserWithGoogle } from "../../firebase/firebaseService"
+import { createUserWithGoogle, createUserWithFacebook } from "../../firebase/firebaseService"
 // import "../components/style/signUpSuccess.css"
 
 
@@ -16,7 +16,7 @@ const createAccountMethods = () =>{
         <h1>You submit succesfully! Let's create a user account here.</h1>
         {createUserForm()}
         <Button onClick={createUserWithGoogle} variant="contained" >createUserWithGoogle</Button>
-        <Button variant="contained">Facebook</Button>
+        <Button onClick={createUserWithFacebook} variant="contained">Facebook</Button>
       </>
     )
   }

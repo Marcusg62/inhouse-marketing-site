@@ -24,7 +24,6 @@ const Home = () => {
           <h2 className="text-light fs-56 m-b-16 w-700">Online Ordering Customized For Your
               Restaurant</h2>
       </div>
-      <ButtonMaterial color="rose">Rose</ButtonMaterial>
       <div className="container bg-light">
           <div className="flex-c">
               <div className="box">
