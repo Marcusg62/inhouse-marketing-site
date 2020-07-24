@@ -1,11 +1,11 @@
 import Typography from 'typography'
-import parnassusTheme from 'typography-theme-parnassus'
-
-const typography = new Typography({
-    baseFontSize: "18px",
+// import lincolnTheme from 'typography-theme-lincoln'
+const typography = new Typography(
+  {
+    baseFontSize: "28px",
     baseLineHeight: 1.666,
     headerFontFamily: [
-      "Avenir Next",
+      "Poppins",
       "Helvetica Neue",
       "Segoe UI",
       "Helvetica",
@@ -13,6 +13,7 @@ const typography = new Typography({
       "sans-serif",
     ],
     bodyFontFamily: ["Georgia", "serif"],
-})
+  }
+)
 export default typography;
 

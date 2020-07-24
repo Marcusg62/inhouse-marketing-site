@@ -1,56 +1,4 @@
 
-// $inhouse-cool: (
-//   50: #e8eaf6,
-//   100: #c5cae9,
-//   200: #9fa8da,
-//   300: #7986cb,
-//   400: #5c6bc0,
-//   500: #0062ff,
-//   600: #3949ab,
-//   700: #303f9f,
-//   800: #283593,
-//   900: #1a237e,
-//   A100: #8c9eff,
-//   A200: #536dfe,
-//   A400: #3d5afe,
-//   A700: #304ffe,
-//   contrast: (
-//     50: $dark-primary-text,
-//     100: $dark-primary-text,
-//     200: $dark-primary-text,
-//     300: $light-primary-text,
-//     400: $light-primary-text,
-//     500: $light-primary-text,
-//     600: $light-primary-text,
-//     700: $light-primary-text,
-//     800: $light-primary-text,
-//     900: $light-primary-text,
-//     A100: $dark-primary-text,
-//     A200: $light-primary-text,
-//     A400: $light-primary-text,
-//     A700: $light-primary-text,
-//   ),
-// );
-
-// $inhouse-marketing-primary: mat-palette($inhouse-cool);
-// $inhouse-marketing-accent: mat-palette($mat-pink, A200, A100, A400);
-
-// // The warn palette is optional (defaults to red).
-// $inhouse-marketing-warn: mat-palette($mat-red);
-
-// // Create the theme object (a Sass map containing all of the palettes).
-// $inhouse-marketing-theme: mat-light-theme(
-//   $inhouse-marketing-primary,
-//   $inhouse-marketing-accent,
-//   $inhouse-marketing-warn
-// );
-
-// // Include theme styles for core and each component used in your app.
-// // Alternatively, you can import and @include the theme mixins for each component
-// // that you are using.
-// @include angular-material-theme($inhouse-marketing-theme);
-
-// /* You can add global styles to this file, and also import other style files */
 .bg-light {
   background-color: #faf9f5;
 }
@@ -60,12 +8,12 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #f3eedf;
+  background-color: #eee;
 }
 * {
   box-sizing: border-box;
   font-weight: lighter;
-  font-family: PlayfairDisplay-Regular, "Helvetica Neue", sans-serif;
+  // font-family: PlayfairDisplay-Regular, "Helvetica Neue", sans-serif;
 }
 
 .bg-primary {
@@ -101,13 +49,8 @@ body {
 //   src: url("./assets/fonts/PlayfairDisplay/PlayfairDisplay-Italic.ttf");
 // }
 
-.sans-regular {
-  font-family: Poppins-Regular, sans-serif;
-}
 
-.sans-bold {
-  font-family: Poppins-Bold, sans-serif;
-}
+
 
 a {
   color: inherit;
@@ -126,9 +69,4 @@ a {
   line-height: 40px !important;
   text-align: center;
   margin: auto;
-}
-
-button > * {
-  font-family: Poppins-Regular, sans-serif !important;
-
 }
