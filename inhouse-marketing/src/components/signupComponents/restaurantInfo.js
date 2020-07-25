@@ -9,9 +9,9 @@ const RestaurantInfo = props =>{
   const restaurantAddressHasError = errors.restaurantAddress && touched.restaurantAddress
   return(
       <>      
-        <TextField
+        <TextField style={{width: "100%"}}
           error = {restaurantNameHasError}
-          label={restaurantNameHasError ? "Error" : "RestaurantName"}
+          label="Restaurant Name"
           helperText={restaurantNameHasError ? errors.restaurantName : null}
           variant="outlined"
           onBlur={handleBlur}
@@ -19,9 +19,11 @@ const RestaurantInfo = props =>{
           onChange={handleChange}
           name="restaurantName"
         /><br />
+        
         <TextField
+        // TO DO: @yingqi google maps/ google places autocomplete
           error = {restaurantAddressHasError}
-          label={restaurantAddressHasError ? "Error" : "RestaurantAddress"}
+          label="Restaurant Address"
           helperText={restaurantAddressHasError ? errors.restaurantAddress : null}
           variant="outlined"
           onBlur={handleBlur}
@@ -31,7 +33,7 @@ const RestaurantInfo = props =>{
           name="restaurantAddress"
         /> <br />       
         <Button
-          disabled={(!touched.restaurantAddress || !touched.restaurantName) || (restaurantNameHasError || restaurantAddressHasError)}
+          // disabled={(!touched.restaurantAddress || !touched.restaurantName) || (restaurantNameHasError || restaurantAddressHasError)}
           onClick={next} 
           variant="contained"
           color="primary"
