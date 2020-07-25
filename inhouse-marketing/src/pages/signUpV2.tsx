@@ -68,6 +68,14 @@ const MultiStep = () => {
 
   const next = () => {
     // update state.step by adding to previous state
+    // TO DO @yingqi 
+
+    // 1
+    // if restaurant name or restaurant address is invalid, don't move forward
+    // set field to touched to show error
+
+    // 2
+    // 3
     setStep(s => s + 1)
   }
 
@@ -85,6 +93,8 @@ const MultiStep = () => {
       .then(() => setSignupSuccess(true))
       .then(() => next())
       .catch(err => alert(err.message))
+
+      // navigate to /dashboard and display 'You submit succesfully! Let's create a user account here.' in dashboard based on query string
   }
 
   const myStepLable = [

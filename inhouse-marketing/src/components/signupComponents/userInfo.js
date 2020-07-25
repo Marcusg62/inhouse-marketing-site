@@ -32,7 +32,7 @@ const UserInfo = props =>{
       <>
        <TextField
           error = {nameHasError}
-          label={nameHasError ? "Error" : "name"}
+          label="Name"
           helperText={nameHasError ? errors.name : null}
           onBlur={handleBlur}
           variant="outlined"
@@ -42,7 +42,8 @@ const UserInfo = props =>{
         /><br />
         <TextField
           error = {phoneHasError}
-          label={phoneHasError ? "Error" : "phone"}
+          label="Phone Number"
+          placeholder="1234567890"
           helperText={phoneHasError ? errors.phone : null}
           onBlur={handleBlur}
           variant="outlined"
