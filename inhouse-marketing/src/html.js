@@ -21,6 +21,7 @@ export default function HTML(props) {
           dangerouslySetInnerHTML={{ __html: props.body }}
         />
         {props.postBodyComponents}
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdrc-RHOFtyoDaVnxndv8wFzxMNTMtaS8&libraries=places"></script>        
       </body>
     </html>
   )
