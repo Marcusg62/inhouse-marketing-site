@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const renderStep = (step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back, signupSuccess) => {
+const renderStep = (step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back, signupSuccess, setFieldValue) => {
   switch (step) {
     case 1:
       return (
@@ -34,6 +34,7 @@ const renderStep = (step, values, errors, handleBlur, touched, handleChange, han
           errors={errors}
           touched={touched}
           handleChange={handleChange}
+          setFieldValue = {setFieldValue}
           next={next}
         />);
     case 2:
@@ -101,6 +102,12 @@ const MultiStep = () => {
     'Restaurant information',
     'User information',
     'Done!'];
+  
+
+  const myCustomHandleChange = (handleChange,values,e) =>{
+    handleChange(e)
+  }
+
 
 
   return (
@@ -115,9 +122,9 @@ const MultiStep = () => {
             onSubmit={handleSubmit}
             validationSchema={SignupSchema}
           >
-            {({ values, errors, handleBlur, touched, handleChange }) => (
+            {({ values, errors, handleBlur, touched, handleChange, setFieldValue}) => (
               <Form className={classes.form}>
-                {renderStep(step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back, signupSuccess)}
+                {renderStep(step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back, signupSuccess, setFieldValue)}
               </Form>
             )}
           </Formik>

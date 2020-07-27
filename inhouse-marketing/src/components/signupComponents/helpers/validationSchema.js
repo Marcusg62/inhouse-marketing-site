@@ -9,7 +9,7 @@ export const SignupSchema = Yup.object().shape({
       .required('A name is required'),
     phone: Yup.string()
       .required('A phone is required')
-      .matches(/^[0-9]{10}$/, 'Must be exactly 10 digits number')
+      .matches(/^[0-9]{10}$/, 'Must be exactly a 10-digit Number.')
   });
 
 export const createUserSchema =  Yup.object().shape({
