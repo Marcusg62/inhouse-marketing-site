@@ -31,6 +31,7 @@ const UserInfo = props =>{
   return(
       <>
        <TextField
+          style={{width:"60%"}}
           error = {nameHasError}
           label="Name"
           helperText={nameHasError ? errors.name : null}
@@ -41,6 +42,7 @@ const UserInfo = props =>{
           name="name"
         /><br />
         <TextField
+          style={{width:"60%"}}
           error = {phoneHasError}
           label="Phone Number"
           placeholder="1234567890"
