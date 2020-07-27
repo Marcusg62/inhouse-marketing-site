@@ -9,20 +9,18 @@ import PlacesAutocomplete, {
 
 
 const RestaurantInfo = props =>{
-  const { values, handleChange, next, errors, touched, handleBlur,handleRestaurantAddress} = props
+  const { values, handleChange, next, errors, touched, handleBlur,setFieldValue} = props
   const restaurantNameHasError = errors.restaurantName && touched.restaurantName
   const restaurantAddressHasError = errors.restaurantAddress && touched.restaurantAddress
-  const [address, setAddress] = useState("address")
-
+  
   const handleAutoComplete = async myAddress =>{
-    await setAddress(myAddress)
-    handleChange(myAddress)
+    setFieldValue('restaurantAddress', myAddress)
   }
 
   return(
       <>      
         <TextField style={{width: "100%"}}
-          value={values.restaurantName}
+          value = {values.restaurantName}
           error = {restaurantNameHasError}
           label="Restaurant Name"
           helperText={restaurantNameHasError ? errors.restaurantName : null}
@@ -34,7 +32,7 @@ const RestaurantInfo = props =>{
         /><br />
 
         <PlacesAutocomplete
-           value={address}
+           value={values.restaurantAddress}
            onChange={selection => handleAutoComplete(selection)}
            onSelect={selection => handleAutoComplete(selection)}
         >
