@@ -101,6 +101,13 @@ const MultiStep = () => {
     'Restaurant information',
     'User information',
     'Done!'];
+  
+  const myCustomHandleChange = (e) =>{
+    typeof(e)=="string"? 
+    console.log(e) 
+    : console.log("value", e.target.value)
+  }
+
 
 
   return (
@@ -112,12 +119,13 @@ const MultiStep = () => {
           {renderStepper(step, myStepLable)}
           <Formik
             initialValues={formData}
+            onChange={myCustomHandleChange}
             onSubmit={handleSubmit}
             validationSchema={SignupSchema}
           >
-            {({ values, errors, handleBlur, touched, handleChange }) => (
+            {({ values, errors, handleBlur, touched}) => (
               <Form className={classes.form}>
-                {renderStep(step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back, signupSuccess)}
+                {renderStep(step, values, errors, handleBlur, touched, myCustomHandleChange, handleSubmit, next, back, signupSuccess)}
               </Form>
             )}
           </Formik>

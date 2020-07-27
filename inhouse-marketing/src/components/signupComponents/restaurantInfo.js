@@ -9,13 +9,20 @@ import PlacesAutocomplete, {
 
 
 const RestaurantInfo = props =>{
-  const { values, handleChange, next, errors, touched, handleBlur} = props
+  const { values, handleChange, next, errors, touched, handleBlur,handleRestaurantAddress} = props
   const restaurantNameHasError = errors.restaurantName && touched.restaurantName
   const restaurantAddressHasError = errors.restaurantAddress && touched.restaurantAddress
-  const [address, setAddress] = useState("")
+  const [address, setAddress] = useState("address")
+
+  const handleAutoComplete = async myAddress =>{
+    await setAddress(myAddress)
+    handleChange(myAddress)
+  }
+
   return(
       <>      
         <TextField style={{width: "100%"}}
+          value={values.restaurantName}
           error = {restaurantNameHasError}
           label="Restaurant Name"
           helperText={restaurantNameHasError ? errors.restaurantName : null}
@@ -25,23 +32,11 @@ const RestaurantInfo = props =>{
           onChange={handleChange}
           name="restaurantName"
         /><br />
-        
-        <TextField
-        // TO DO: @yingqi google maps/ google places autocomplete
-          error = {restaurantAddressHasError}
-          label="Restaurant Address"
-          helperText={restaurantAddressHasError ? errors.restaurantAddress : null}
-          variant="outlined"
-          onBlur={handleBlur}
-          defaultValue={values.restaurantAddress}
-          onChange={handleChange}
-          name="restaurantAddress"
-        /> <br /> 
 
         <PlacesAutocomplete
            value={address}
-           onChange={setAddress}
-           onSelect={()=>console.log("selected!")}
+           onChange={selection => handleAutoComplete(selection)}
+           onSelect={selection => handleAutoComplete(selection)}
         >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
