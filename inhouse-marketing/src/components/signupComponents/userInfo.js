@@ -31,8 +31,9 @@ const UserInfo = props =>{
   return(
       <>
        <TextField
+          style={{width:"60%"}}
           error = {nameHasError}
-          label={nameHasError ? "Error" : "name"}
+          label="Name"
           helperText={nameHasError ? errors.name : null}
           onBlur={handleBlur}
           variant="outlined"
@@ -41,8 +42,10 @@ const UserInfo = props =>{
           name="name"
         /><br />
         <TextField
+          style={{width:"60%"}}
           error = {phoneHasError}
-          label={phoneHasError ? "Error" : "phone"}
+          label="Phone Number"
+          placeholder="1234567890"
           helperText={phoneHasError ? errors.phone : null}
           onBlur={handleBlur}
           variant="outlined"
@@ -64,7 +67,6 @@ const UserInfo = props =>{
           </Button>
 
           <Button 
-            disabled={(!touched.name || !touched.phone) || (phoneHasError || nameHasError)}            
             onClick={()=>handleSubmit(values)} 
             variant="contained"
             color="primary"

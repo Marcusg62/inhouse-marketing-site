@@ -21,8 +21,8 @@ const Home = () => {
     return (
     <>
       <div className="hero pos-relative flex-c-b">
-          <h2 className="text-light fs-56 m-b-16 w-700">Online Ordering Customized For Your
-              Restaurant</h2>
+          <h1 className="text-light m-b-16 w-700">Online Ordering Customized For Your
+              Restaurant</h1>
       </div>
       <div className="container bg-light">
           <div className="flex-c">
@@ -78,8 +78,7 @@ const Home = () => {
         ZIP: "42424"
     </h4>
     <div className="m-auto m-t-16 m-b-16 flex-c">
-        <button mat-raised-button color="primary"><a style={{"font-family": "Poppins-Regular, sans"}}
-                href="https://demo.inhouseorders.io" target="_blamk">Hot Thai
+        <button mat-raised-button color="primary"><a href="https://demo.inhouseorders.io" target="_blamk">Hot Thai
                 Demo</a></button>
     </div>
 </div>
