@@ -65,7 +65,6 @@ const UserInfo = props =>{
           </Button>
 
           <Button 
-            disabled={(!touched.name || !touched.phone) || (phoneHasError || nameHasError)}            
             onClick={()=>handleSubmit(values)} 
             variant="contained"
             color="primary"

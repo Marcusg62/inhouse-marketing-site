@@ -1,10 +1,8 @@
-import React, { useState } from "react"
-import { TextField } from '@material-ui/core'
+import React from "react"
+import { TextField, Paper } from '@material-ui/core'
 import {Button} from '@material-ui/core'
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
+import PlacesAutocomplete from 'react-places-autocomplete';
+
 
 
 
@@ -19,7 +17,7 @@ const RestaurantInfo = props =>{
 
   return(
       <>      
-        <TextField style={{width: "100%"}}
+        <TextField style={{width: "60%"}}
           value = {values.restaurantName}
           error = {restaurantNameHasError}
           label="Restaurant Name"
@@ -37,8 +35,9 @@ const RestaurantInfo = props =>{
            onSelect={selection => handleAutoComplete(selection)}
         >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div>
+          <div style={{width:"60%"}}>
             <TextField
+              style={{width:"100%"}}
               {...getInputProps()}
               variant="outlined"
               error = {restaurantAddressHasError}
@@ -48,7 +47,11 @@ const RestaurantInfo = props =>{
               defaultValue={values.restaurantAddress}
               name="restaurantAddress"
             />
-            <div className="autocomplete-dropdown-container">
+            <Paper 
+              className="autocomplete-dropdown-container"
+              elevation={3}
+              variant="outlined"
+            >
               {loading && <div>Loading...</div>}
               {suggestions.map(suggestion => {
                 const className = suggestion.active
@@ -65,11 +68,11 @@ const RestaurantInfo = props =>{
                       style,
                     })}
                   >
-                    <span>{suggestion.description}</span>
+                    <span style={{padding:"3% 1%"}}>{suggestion.description}</span>
                   </div>
                 );
               })}
-            </div>
+            </Paper>
           </div>
         )}
         </PlacesAutocomplete>
