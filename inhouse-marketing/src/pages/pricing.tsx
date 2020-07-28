@@ -5,7 +5,7 @@ import { Card, Box, CardContent, Divider, CardMedia } from "@material-ui/core"
 import StoreMallDirectory from "@material-ui/icons/StoreMallDirectory"
 import LocationOn from "@material-ui/icons/LocationOn"
 import AccountBalance from "@material-ui/icons/AccountBalance"
-import CustomAppImg from "../images/custom app.jpeg"
+// import CustomAppImg from "../images/custom app.jpeg"
 
 const pricing = () => {
   return (
@@ -104,26 +104,70 @@ const pricing = () => {
           </Card>
         </Box>
       </Box>
+      <Box m="2rem" textAlign="center">
+        <Box width="100%" maxWidth={700} mx="auto">
+          <Card className="w-100 m-b-16">
+            <CardContent>
+              <h1 className="m-b-16 txt-normal">What's included?</h1>
+              <p className="m-b-16">
+                No matter which option you choose, you get the following
+                features and services.{" "}
+              </p>
+              <h3 >Online Ordering</h3>
+              <p>Contactless Ordering & Payment</p>
+              <p>Daily Payouts</p>
+              
+
+              <h3 className="m-t-16">Free Website & Domain</h3>
+              <p>SEO (Search Engine Optimization)</p>
+              <p>Mobile Friendly</p>
+              <p>No annual renewal fees</p>
+              <p>Branded and customizable</p>
+              <p>Free SSL certificate</p>
+
+              <h3 className="m-t-16">Google Business Account</h3>
+              <p>Free Account Verification on Google</p>
+              <p>Update & Maintain Hours, Prices, etc</p>
+              <p>Top Ranking On Google</p>
+
+              <h3 className="m-t-16">Account Advisor</h3>
+              <p>
+                We'll match you with an advisor who speaks your language and
+                knows the industry.
+              </p>
+              <p>24/7 access to your advisor</p>
+              <p>No outsourced support in other countries</p>
+
+              <h3 className="m-t-16">On-Site Setup</h3>
+              <p>Free On-Site Setup and Consultation</p>
+              <p>Receipt Printing Setup*</p>
+              <p></p>
+            </CardContent>
+          </Card>
+        </Box>
+      </Box>{" "}
       <Divider></Divider>
       <Box m="2rem" textAlign="center">
         <h1 className="m-b-16 txt-normal">Add Ons</h1>
         <p>These add ons will help you get more customers order online. </p>
         <Box width="100%" maxWidth={700} mx="auto">
           <Card className="w-100 m-b-16">
-            <CardMedia
+            {/* <CardMedia
             style={{height: "150px", width: "150px", display: "inline-block", margin: "0px"}}
               image="https://media-assets-03.thedrum.com/cache/images/thedrum-prod/s3-news-tmp-90538-social-media-mobile-icons-snapchat-facebook-instagram-ss-1920--2x1--940.jpg"
               title="A customer holding a smartphone ordering food with a custom built app."
-            />
+            /> */}
             <CardContent>
               <h3>Custom App</h3>
+              <p>$2000</p>
               <p>A custom app that your regular customers will love. </p>
             </CardContent>
           </Card>
 
-          <Card className="w-100">
+          <Card className="w-100 m-b-16">
             <CardContent>
               <h3>Marketing</h3>
+              <p>Starting at $25</p>
               <p>
                 So you have online ordering, but do your customers know about
                 it?
@@ -131,13 +175,11 @@ const pricing = () => {
             </CardContent>
           </Card>
 
-          <Card className="w-100">
+          <Card className="w-100 m-b-16">
             <CardContent>
               <h3>Receipt Printer</h3>
-              <p>
-                You can enter orders into your POS or just get the receipt
-                printed.{" "}
-              </p>
+              <p>$250* price may vary</p>
+              <p>Out reccomended printing solution. </p>
             </CardContent>
           </Card>
         </Box>
