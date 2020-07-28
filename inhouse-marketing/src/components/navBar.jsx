@@ -7,6 +7,7 @@ import MenuIcon from "@material-ui/icons/Menu"
 import MenuItem from "@material-ui/core/MenuItem"
 import { Drawer, List, ListItem, Button } from "@material-ui/core"
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp"
+import MonetizationOnRounded from "@material-ui/icons/MonetizationOnRounded"
 import { Link } from "gatsby"
 import { signOut } from "../firebase/firebaseService"
 // import Button from "material-dashboard-pro-react-v1.9.0/src/components/CustomButtons/Button"
@@ -19,7 +20,6 @@ const useStyles = makeStyles(theme => ({
     color: "black",
     justifyContent: "space-between",
     alignContent: "center",
-    
   },
   drawer: {
     width: drawerWidth,
@@ -66,6 +66,10 @@ export default function NavBar() {
         </Link>
 
         <div style={{ display: "flex", alignItems: "center" }}>
+          <Link to="/pricing">
+            <Button startIcon={<MonetizationOnRounded />}>Pricing</Button>
+          </Link>
+
           <Button>Sign In</Button>
           <Button onClick={signOut}>Sign Out</Button>
           <Button>My profile</Button>

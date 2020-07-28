@@ -1,6 +1,5 @@
 a {
-	text-decoration: underline;
-	// font-family: inherit;
+	text-decoration: none;
 }
 .m-auto {
   margin: auto;
@@ -12,7 +11,12 @@ a {
   max-width: 700px;
   margin: auto;
 }
-
+.txt-lighter {
+  font-weight: lighter;
+}
+.txt-normal {
+  font-weight: normal;
+}
 .txt-bold {
   font-weight: bold;
 }
