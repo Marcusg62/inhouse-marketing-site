@@ -1,0 +1,72 @@
+.callout {
+  float: left;
+  position: relative;
+  padding: .5rem 1rem;
+  min-height: 50px;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14) !important;
+
+}
+
+.callout::before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  border: 0.8em solid transparent;
+  position: absolute;
+}
+
+.callout.top::before {
+  left: 45%;
+  bottom: -20px;
+  border-top: 10px solid #fff;
+}
+
+.callout.bottom::before {
+  left: 45%;
+  top: -20px;
+  border-bottom: 10px solid #fff;
+}
+
+.callout.left::before {
+  right: -20px;
+  top: 40%;
+  border-left: 10px solid #fff;
+}
+
+.callout.right::before {
+    top: 2rem;
+    right: -15px;
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    border-top: 15px solid transparent;
+    border-left: 15px solid #ffffff;
+    border-right: 0 solid #ffffff;
+    border-bottom: 15px solid transparent;
+    left: -15px;
+    right: auto;
+    border-left-width: 0;
+    border-right-width: 15px;
+
+  
+}
+
+.callout.top-left::before {
+  left: 7px;
+  bottom: -20px;
+  border-top: 10px solid #fff;
+}
+
+.callout.top-right::before {
+  right: 7px;
+  bottom: -20px;
+  border-top: 10px solid #fff;
+}
+
+.MuiTimelineItem-missingOppositeContent:before {
+    flex: 0 !important;
+    padding: 0 !important;
+}
+ul {
+    margin-left: 0 !important;
+}

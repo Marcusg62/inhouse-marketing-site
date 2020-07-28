@@ -2,12 +2,10 @@ import React, { useState } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
-import IconButton from "@material-ui/core/IconButton"
 import MenuIcon from "@material-ui/icons/Menu"
-import MenuItem from "@material-ui/core/MenuItem"
-import { Drawer, List, ListItem, Button } from "@material-ui/core"
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp"
+import { Drawer, List, ListItem, Button, ListItemText } from "@material-ui/core"
 import MonetizationOnRounded from "@material-ui/icons/MonetizationOnRounded"
+import Autorenew from "@material-ui/icons/Autorenew"
 import { Link } from "gatsby"
 import { signOut } from "../firebase/firebaseService"
 // import Button from "material-dashboard-pro-react-v1.9.0/src/components/CustomButtons/Button"
@@ -64,10 +62,13 @@ export default function NavBar() {
         <Link to="/" className={classes.link}>
           Inhouse Orders
         </Link>
-
+        
         <div style={{ display: "flex", alignItems: "center" }}>
           <Link to="/pricing">
             <Button startIcon={<MonetizationOnRounded />}>Pricing</Button>
+          </Link>
+          <Link to="/how-it-works">
+            <Button startIcon={<Autorenew />}>How It Works</Button>
           </Link>
 
           <Button>Sign In</Button>
@@ -86,26 +87,28 @@ export default function NavBar() {
         onClose={handleDrawerClose}
       >
         <List>
-          <ListItem>
-            <Link to="/" className={classes.link}>
-              <MenuItem>Home</MenuItem>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link to="/process" className={classes.link}>
-              <MenuItem>How it works</MenuItem>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link to="/pricing" className={classes.link}>
-              <MenuItem>Pricing</MenuItem>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link to="/getStarted" className={classes.link}>
-              <MenuItem>Get started</MenuItem>
-            </Link>
-          </ListItem>
+          <Link to="/" className={classes.link}>
+            <ListItem button divider>
+              <ListItemText primary="Home"></ListItemText>
+            </ListItem>
+          </Link>
+
+          <Link to="/how-it-works" className={classes.link}>
+            <ListItem button divider>
+              <ListItemText primary="How it works"></ListItemText>
+            </ListItem>
+          </Link>
+
+          <Link to="/pricing" className={classes.link}>
+            <ListItem button divider>
+              <ListItemText primary="Pricing"></ListItemText>
+            </ListItem>
+          </Link>
+          <Link to="/get-started">
+            <ListItem button divider>
+              <ListItemText primary="Get started" />
+            </ListItem>
+          </Link>
         </List>
       </Drawer>
     </AppBar>
