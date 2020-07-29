@@ -7,12 +7,22 @@ import AutoCompleteAddress from './AutoCompleteAddress'
 
 
 const RestaurantInfo = props =>{
-  const { values, handleChange, next, errors, touched, handleBlur,setFieldValue} = props
+  const { values, handleChange, next, errors, touched, handleBlur,setFieldValue,setFieldTouched} = props
   const restaurantNameHasError = errors.restaurantName && touched.restaurantName
   const restaurantAddressHasError = errors.restaurantAddress && touched.restaurantAddress
   
-  const handleAutoComplete = async myAddress =>{
+  const handleAutoComplete = myAddress =>{
     setFieldValue('restaurantAddress', myAddress)
+  }
+  
+  //my custom method to handle Click
+  const handleClick = () => {
+  // if there are errors, then stay on this screen
+    if (!touched.restaurantAddress || !touched.restaurantName){
+      setFieldTouched("restaurantName")
+      setFieldTouched("restaurantAddress")
+    }
+  // if there are no errorsm then invoke next() to next step
   }
 
   return(
@@ -37,8 +47,8 @@ const RestaurantInfo = props =>{
           handleBlur={handleBlur}
         />
         <Button
-          // disabled={(!touched.restaurantAddress || !touched.restaurantName) || (restaurantNameHasError || restaurantAddressHasError)}
-          onClick={next} 
+          // disabled={ || (restaurantNameHasError || restaurantAddressHasError)}
+          onClick={handleClick} 
           variant="contained"
           color="primary"
         >Next

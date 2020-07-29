@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const renderStep = (step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back, signupSuccess, setFieldValue) => {
+const renderStep = (step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back, signupSuccess, setFieldValue,setFieldTouched) => {
   switch (step) {
     case 1:
       return (
@@ -35,6 +35,7 @@ const renderStep = (step, values, errors, handleBlur, touched, handleChange, han
           touched={touched}
           handleChange={handleChange}
           setFieldValue = {setFieldValue}
+          setFieldTouched={setFieldTouched}
           next={next}
         />);
     case 2:
@@ -48,8 +49,6 @@ const renderStep = (step, values, errors, handleBlur, touched, handleChange, han
           handleSubmit={handleSubmit}
           handleBlur={handleBlur}
         />);
-    case 3:
-      return <AfterSubmit signupSuccess={signupSuccess} />;
     default:
       return <RestaurantInfo errors={errors} touched={touched} />;
   }
@@ -60,7 +59,6 @@ const MultiStep = () => {
   const [signupSuccess, setSignupSuccess] = useState(false)
   const classes = useStyles();
   const formData = {
-    step: 1,
     restaurantName: "",
     restaurantAddress: "",
     name: "",
@@ -72,8 +70,7 @@ const MultiStep = () => {
     // TO DO @yingqi 
 
     // 1
-    // if restaurant name or restaurant address is invalid, don't move forward
-    // set field to touched to show error
+
 
     // 2
     // 3
@@ -100,19 +97,10 @@ const MultiStep = () => {
 
   const myStepLable = [
     'Restaurant information',
-    'User information',
-    'Done!'];
-  
-
-  const myCustomHandleChange = (handleChange,values,e) =>{
-    handleChange(e)
-  }
-
-
+    'User information'];
 
   return (
     <Layout>
-
       <Card>
         <CardContent>
           {/* because my step starting from 1, so activeStep would be my step-1 */}
@@ -122,9 +110,9 @@ const MultiStep = () => {
             onSubmit={handleSubmit}
             validationSchema={SignupSchema}
           >
-            {({ values, errors, handleBlur, touched, handleChange, setFieldValue}) => (
+            {({ values, errors, handleBlur, touched, handleChange, setFieldValue, setFieldTouched}) => (
               <Form className={classes.form}>
-                {renderStep(step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back, signupSuccess, setFieldValue)}
+                {renderStep(step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back, signupSuccess, setFieldValue,setFieldTouched)}
               </Form>
             )}
           </Formik>
