@@ -21,8 +21,9 @@ const RestaurantInfo = props =>{
     if (!touched.restaurantAddress || !touched.restaurantName){
       setFieldTouched("restaurantName")
       setFieldTouched("restaurantAddress")
-    }
-  // if there are no errorsm then invoke next() to next step
+    }else if(!restaurantNameHasError && !restaurantAddressHasError){
+      next() // if there are no errorsm then invoke next() to next step
+    } 
   }
 
   return(
