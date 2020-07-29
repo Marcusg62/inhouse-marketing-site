@@ -47,6 +47,7 @@ const renderStep = (step, values, errors, handleBlur, touched, handleChange, han
           handleChange={handleChange}
           back={back}
           handleSubmit={handleSubmit}
+          setFieldTouched={setFieldTouched}
           handleBlur={handleBlur}
         />);
     default:
@@ -89,7 +90,7 @@ const MultiStep = () => {
     // connect to the firebase to create a document 
     submitOnBoardingForm(payload)
       .then(() => setSignupSuccess(true))
-      .then(() => next())
+      .then(() => alert("successfully submited!"))
       .catch(err => alert(err.message))
 
       // navigate to /dashboard and display 'You submit succesfully! Let's create a user account here.' in dashboard based on query string

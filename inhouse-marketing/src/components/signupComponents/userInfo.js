@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import MaskedInput from 'react-text-mask';
 
 const UserInfo = props =>{
-  const { values, handleChange, handleSubmit, back,errors, touched, handleBlur} = props
+  const { values, handleChange, handleSubmit, back,errors, touched, handleBlur,setFieldTouched} = props
   const nameHasError = errors.name && touched.name
   const phoneHasError = errors.phone && touched.phone
   // function TextMaskCustom(props) {
@@ -27,6 +27,15 @@ const UserInfo = props =>{
   // TextMaskCustom.propTypes = {
   //   inputRef: PropTypes.func.isRequired,
   // };
+  const customSubmit = () => {
+    // if there are errors, then stay on this screen
+      if (!touched.name || !touched.phone){
+        setFieldTouched("name")
+        setFieldTouched("phone")
+      }else if(!nameHasError && !phoneHasError){
+        handleSubmit(values) // if there are no errorsm then invoke next() to next step
+      } 
+    }
 
   return(
       <>
@@ -67,7 +76,7 @@ const UserInfo = props =>{
           </Button>
 
           <Button 
-            onClick={()=>handleSubmit(values)} 
+            onClick={customSubmit} 
             variant="contained"
             color="primary"
           >Submit
