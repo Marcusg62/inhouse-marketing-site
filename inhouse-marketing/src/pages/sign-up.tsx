@@ -66,15 +66,8 @@ const MultiStep = () => {
     phone: "",
   }
 
+  //process to next step by adding to step state
   const next = () => {
-    // update state.step by adding to previous state
-    // TO DO @yingqi 
-
-    // 1
-
-
-    // 2
-    // 3
     setStep(s => s + 1)
   }
 
@@ -85,8 +78,6 @@ const MultiStep = () => {
   }
 
   const handleSubmit = payload => {
-    // delete the step key in the payload,it doesn't have to be saved
-    delete payload.step
     // connect to the firebase to create a document 
     submitOnBoardingForm(payload)
       .then(() => setSignupSuccess(true))
