@@ -10,6 +10,7 @@ import { submitOnBoardingForm } from "../firebase/firebaseService";
 import renderStepper from "../components/signupComponents/stepper"
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import { navigate } from "gatsby";
 
 
 
@@ -80,8 +81,8 @@ const MultiStep = () => {
   const handleSubmit = payload => {
     // connect to the firebase to create a document 
     submitOnBoardingForm(payload)
-      .then(() => setSignupSuccess(true))
-      .then(() => alert("successfully submited!"))
+      .then((user) => console.log(user))
+      .then(() => navigate('/dashboard'))
       .catch(err => alert(err.message))
 
       // navigate to /dashboard and display 'You submit succesfully! Let's create a user account here.' in dashboard based on query string
