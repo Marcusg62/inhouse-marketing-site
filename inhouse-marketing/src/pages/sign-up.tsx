@@ -3,7 +3,6 @@ import { Formik, Form } from "formik";
 import { makeStyles } from "@material-ui/core/styles";
 import RestaurantInfo from "../components/signupComponents/restaurantInfo";
 import UserInfo from "../components/signupComponents/userInfo";
-import AfterSubmit from "../components/signupComponents/afterSubmit";
 import Layout from "../components/layout";
 import { SignupSchema } from '../components/signupComponents/helpers/validationSchema'
 import { submitOnBoardingForm } from "../firebase/firebaseService";
