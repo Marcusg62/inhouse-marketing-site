@@ -25,7 +25,6 @@ export const submitOnBoardingForm = (payload) => {
   //return a promise to handleSubmit, dont catch the error, or handleSubmit would
   // get a resolved result instead of catching the error bc the erro already solved here..
   return db.collection("onboarding_form_submission").add(payload)
-    .then((data) => console.log("here's the data", data.id))
 }
 
 export const createUser = payload => {
@@ -52,7 +51,7 @@ export const monitorAuth = () => {
     if (user) {
       console.log('logged in!')
       console.log(user.email)
-
+      
     }
     else {
       console.log('logged out!')

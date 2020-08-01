@@ -22,8 +22,10 @@ const componentStyles = makeStyles(theme => ({
   }) 
   )
 
-const createUserForm = () =>{
+
+const createUserForm = props =>{
     const classes = componentStyles();
+    console.log(props)
     return (
     <>
         <Formik 
