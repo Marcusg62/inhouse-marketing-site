@@ -25,6 +25,9 @@ const componentStyles = makeStyles(theme => ({
 
 const createUserForm = props =>{
     const classes = componentStyles();
+    const customSubmit = (values, props) => {
+      console.log("values:",values, "props:", props)
+    }
     console.log(props)
     return (
     <>
@@ -33,7 +36,7 @@ const createUserForm = props =>{
            onSubmit={createUser}
            validationSchema={createUserSchema}
         >
-            {({values,handleChange, handleSubmit, errors,touched,handleBlur }) =>{
+            {({values,handleChange, errors,touched,handleBlur }) =>{
                   const emailHasError = errors.email && touched.email
                   const passwordHasError = errors.password && touched.password
                 return(    
@@ -59,7 +62,7 @@ const createUserForm = props =>{
                         /><br />                    
                     <Button 
                         disabled={(!touched.email || !touched.password) || (passwordHasError || emailHasError)}            
-                        onClick={()=>handleSubmit(values)} 
+                        onClick={()=>customSubmit(values, props)} 
                         variant="contained"
                         color="primary"
                     >Submit
