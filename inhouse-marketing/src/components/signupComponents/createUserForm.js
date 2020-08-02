@@ -23,22 +23,33 @@ const componentStyles = makeStyles(theme => ({
   )
 
 
-const createUserForm = props =>{
+const createUserForm = restaurantID =>{
     const classes = componentStyles();
-    const customSubmit = (values, props) => {
-      console.log("values:",values, "props:", props)
-    }
-    console.log(props)
+    console.log(restaurantID)
     return (
     <>
         <Formik 
            initialValues={initialValues}
-           onSubmit={createUser}
            validationSchema={createUserSchema}
         >
-            {({values,handleChange, errors,touched,handleBlur }) =>{
+            {({values,handleChange, errors,touched, handleBlur,setFieldTouched}) =>{
                   const emailHasError = errors.email && touched.email
                   const passwordHasError = errors.password && touched.password
+                  
+                  const customSubmit = () => {
+                    if (!touched.email || !touched.password){
+                      // if user wants to proceed without touching any field, the form can't be submited
+                      setFieldTouched("password")
+                      setFieldTouched("email")
+                    }else if(!passwordHasError && !emailHasError){
+                        // if there are no errors then invoke next() to next step
+                        console.log("values:",values, "restaurantID:", restaurantID)         
+                        createUser(values, restaurantID)
+                          .then((data) => console.log(data))
+                          .catch( err => console.log(err))
+                    } 
+                  }
+
                 return(    
                 <Form className={classes.form}>
                     <TextField
@@ -61,8 +72,7 @@ const createUserForm = props =>{
                         name="password"
                         /><br />                    
                     <Button 
-                        disabled={(!touched.email || !touched.password) || (passwordHasError || emailHasError)}            
-                        onClick={()=>customSubmit(values, props)} 
+                        onClick={customSubmit} 
                         variant="contained"
                         color="primary"
                     >Submit

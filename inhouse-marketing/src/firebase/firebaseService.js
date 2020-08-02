@@ -1,10 +1,12 @@
 //This document will handle everything to connect with firebase database or authetication
 import firebase from "gatsby-plugin-firebase"
+import { functions } from "firebase";
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
 const auth = firebase.auth()
 const db = firebase.firestore()
+const firebaseFunctions = firebase.functions()
 
 const creditialsWithPopup = provider => {
   firebase.auth().signInWithPopup(provider)
@@ -27,25 +29,42 @@ export const submitOnBoardingForm = (payload) => {
   return db.collection("onboarding_form_submission").add(payload)
 }
 
-export const createUser = payload => {
-  auth.createUserWithEmailAndPassword(payload.email, payload.password).then((data) => alert(data))
-    .catch(err => console.log("Error!", err.message))
+// create users with email and password
+export const createUser = (values, restaurantID)=> {
+  // 1. create a user with email and pw
+  // 2. create a user in db
+  // 3. the user should look like: {
+  //   email: ...,
+      //  restaurantID:...
+  // }
+  const linkUserWithRestaurantID = (data, restaurantID) =>{
+    const createUserWithRestaurant = firebaseFunctions.httpsCallable("create_user_with_restaurant")
+    const payload = {restaurantID: restaurantID, user: data}
+    return createUserWithRestaurant(payload)
+  }
+  
+  return auth.createUserWithEmailAndPassword(values.email, values.password)
+    .then((data) => linkUserWithRestaurantID(data, restaurantID))
 }
 
+// create users with google account
 export const createUserWithGoogle = () => {
   creditialsWithPopup(googleProvider)
 }
 
+// create users with fb account
 export const createUserWithFacebook = () => {
   creditialsWithPopup(facebookProvider)
 }
 
+//sign out users
 export const signOut = () => {
   auth.signOut()
     .then(() => alert("Sign out Succesfully!"))
     .catch(err => console.log(err))
 }
 
+// used to conditionally rendering your UI
 export const monitorAuth = () => {
   auth.onAuthStateChanged(user => {
     if (user) {
