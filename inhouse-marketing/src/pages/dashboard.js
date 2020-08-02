@@ -24,7 +24,7 @@ const Dashboard = props => {
           {propertiesPassed("fromOnboardingForm")? 
            <h1>You submit succesfully! Let's create a user account here.</h1> : null}
            {/* RestaurantID would be null or a realID object depending on how the dashboard page is navigated */}
-           {createUserForm(propertiesPassed("restaurantID"))}
+           {createUserForm({...propertiesPassed("restaurantID"),...propertiesPassed("payload")})}
          </>
          
        )

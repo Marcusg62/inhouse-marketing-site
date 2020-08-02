@@ -30,21 +30,21 @@ export const submitOnBoardingForm = (payload) => {
 }
 
 // create users with email and password
-export const createUser = (values, restaurantID)=> {
+export const createUser = (values, restaurantID, payload)=> {
   // 1. create a user with email and pw
   // 2. create a user in db
   // 3. the user should look like: {
   //   email: ...,
       //  restaurantID:...
   // }
-  const linkUserWithRestaurantID = (data, restaurantID) =>{
+  const linkUserWithRestaurantID = data =>{
     const createUserWithRestaurant = firebaseFunctions.httpsCallable("create_user_with_restaurant")
-    const payload = {restaurantID: restaurantID, user: data}
-    return createUserWithRestaurant(payload)
+    const informationForDB = {restaurantID: restaurantID, user: data, name: payload.name,phone:payload.phone}
+    return createUserWithRestaurant(informationForDB)
   }
   
   return auth.createUserWithEmailAndPassword(values.email, values.password)
-    .then((data) => linkUserWithRestaurantID(data, restaurantID))
+    .then((data) => linkUserWithRestaurantID(data))
 }
 
 // create users with google account
