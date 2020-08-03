@@ -23,9 +23,9 @@ const componentStyles = makeStyles(theme => ({
   )
 
 
-const createUserForm =() =>{
+const createUserForm =({restaurantID,payload}) =>{
     const classes = componentStyles();
-    // console.log(restaurantID, payload)
+    console.log(restaurantID, payload)
     return (
     <>
         <Formik 
