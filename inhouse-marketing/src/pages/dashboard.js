@@ -26,7 +26,7 @@ const Dashboard = props => {
            {createUserForm(
              {
              restaurantID: propertiesPassed("restaurantID"),
-             payload: propertiesPassed("payload"
+             formSubmission: propertiesPassed("payload"
              )
             }
             )}
