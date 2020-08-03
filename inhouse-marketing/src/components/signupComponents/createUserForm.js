@@ -43,9 +43,6 @@ const createUserForm = ({ restaurantID, formSubmission }) => {
               setFieldTouched("email")
             } else if (!passwordHasError && !emailHasError) {
               // everything looks good, - call cloud function now
-              console.log("values:", values, "restaurantID:", restaurantID)
-
-
               try {
                 console.log('formSubmission', formSubmission)
 

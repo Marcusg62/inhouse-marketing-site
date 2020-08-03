@@ -39,11 +39,8 @@ export const createUser_connectForm = async (restaurantID, formSubmission, email
 
   await createUserWithEmailPw(emailpwVals.email, emailpwVals.password);
 
-  
-
   const createUserWithRestaurant = firebaseFunctions.httpsCallable("create_user_with_restaurant");
 
-  console.log(formSubmission)
   const functionData = {
     restaurantID: restaurantID,
     name: formSubmission.name,
@@ -52,7 +49,6 @@ export const createUser_connectForm = async (restaurantID, formSubmission, email
 
   try {
     let result = await createUserWithRestaurant(functionData)
-    console.log(result)
     return result;
   } catch (error) {
     console.error(error)
@@ -62,7 +58,7 @@ export const createUser_connectForm = async (restaurantID, formSubmission, email
 }
 
 // create users with google account
-export const createUserWithEmailPw = (email, pw) => {
+const createUserWithEmailPw = (email, pw) => {
   auth.createUserWithEmailAndPassword(email, pw)
 }
 
