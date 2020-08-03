@@ -41,11 +41,11 @@ export const createUser = (values, restaurantID, payload)=> {
   const linkUserWithRestaurantID = user =>{
     const createUserWithRestaurant = firebaseFunctions.httpsCallable("create_user_with_restaurant")
     const informationForDB = {restaurantID: restaurantID, userInstance: user, name: payload.name,phone:payload.phone}
-    return createUserWithRestaurant(informationForDB)
+    return createUserWithRestaurant(informationForDB).then((data)=> console.log("within lur:", data)).catch((data)=> console.log("within lur: error", data))
   }
   
   return auth.createUserWithEmailAndPassword(values.email, values.password)
-    .then((user) => linkUserWithRestaurantID(user))
+    .then((user) => linkUserWithRestaurantID(user)).catch((data)=> console.log("within cep:", data))
 }
 
 // create users with google account
