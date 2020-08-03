@@ -37,7 +37,7 @@ export const createUser_connectForm = async (restaurantID, formSubmission, email
 
   //create user with email and pw
 
-  await createUserWithEmailPw(emailpwVals.email, emailpwVals.password);
+  await createUserWithEmailPw(emailpwVals.email, emailpwVals.password)
 
   const createUserWithRestaurant = firebaseFunctions.httpsCallable("create_user_with_restaurant");
 
@@ -51,7 +51,7 @@ export const createUser_connectForm = async (restaurantID, formSubmission, email
     let result = await createUserWithRestaurant(functionData)
     return result;
   } catch (error) {
-    console.error(error)
+    console.error("within firebase service:", error)
   }
 
 
@@ -60,13 +60,13 @@ export const createUser_connectForm = async (restaurantID, formSubmission, email
 // create users with google account
 const createUserWithEmailPw = (email, pw) => {
   auth.createUserWithEmailAndPassword(email, pw)
+  .catch(err => alert(err))
 }
 
 // create users with google account
 export const createUserWithGoogle = () => {
   creditialsWithPopup(googleProvider)
 }
-
 // create users with fb account
 export const createUserWithFacebook = () => {
   creditialsWithPopup(facebookProvider)

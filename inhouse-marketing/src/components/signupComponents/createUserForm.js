@@ -50,7 +50,7 @@ const createUserForm = ({ restaurantID, formSubmission }) => {
                 console.log(data)
 
               } catch (error) {
-                console.log(error)
+                console.log("within: cuf:",error)
               }
 
             }
