@@ -35,16 +35,17 @@ export const createUser = (values, restaurantID, payload)=> {
   // 2. create a user in db
   // 3. the user should look like: {
   //   email: ...,
+    
       //  restaurantID:...
   // }
-  const linkUserWithRestaurantID = data =>{
+  const linkUserWithRestaurantID = user =>{
     const createUserWithRestaurant = firebaseFunctions.httpsCallable("create_user_with_restaurant")
-    const informationForDB = {restaurantID: restaurantID, user: data, name: payload.name,phone:payload.phone}
+    const informationForDB = {restaurantID: restaurantID, userInstance: user, name: payload.name,phone:payload.phone}
     return createUserWithRestaurant(informationForDB)
   }
   
   return auth.createUserWithEmailAndPassword(values.email, values.password)
-    .then((data) => linkUserWithRestaurantID(data))
+    .then((user) => linkUserWithRestaurantID(user))
 }
 
 // create users with google account

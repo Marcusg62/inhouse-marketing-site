@@ -23,9 +23,9 @@ const componentStyles = makeStyles(theme => ({
   )
 
 
-const createUserForm = restaurantID =>{
+const createUserForm =() =>{
     const classes = componentStyles();
-    console.log(restaurantID)
+    // console.log(restaurantID, payload)
     return (
     <>
         <Formik 
@@ -44,7 +44,7 @@ const createUserForm = restaurantID =>{
                     }else if(!passwordHasError && !emailHasError){
                         // if there are no errors then invoke next() to next step
                         console.log("values:",values, "restaurantID:", restaurantID)         
-                        createUser(values, restaurantID)
+                        createUser(values, restaurantID, payload)
                           .then((data) => console.log(data))
                           .catch( err => console.log(err))
                     } 

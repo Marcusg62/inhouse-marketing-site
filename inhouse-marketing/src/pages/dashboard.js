@@ -10,7 +10,6 @@ const Dashboard = props => {
           if so, add a paragraph saying congrats on registration
           3. if no user and not come from a submitted page, just ask for sign in or sign up
            */} 
-    
     const propertiesPassed = value => {
       if(props.location.state){
         return props.location.state[value]
@@ -24,7 +23,13 @@ const Dashboard = props => {
           {propertiesPassed("fromOnboardingForm")? 
            <h1>You submit succesfully! Let's create a user account here.</h1> : null}
            {/* RestaurantID would be null or a realID object depending on how the dashboard page is navigated */}
-           {createUserForm({...propertiesPassed("restaurantID"),...propertiesPassed("payload")})}
+           {createUserForm(
+             {
+             restaurantID: propertiesPassed("restaurantID"),
+             payload: propertiesPassed("payload"
+             )
+            }
+            )}
          </>
          
        )
