@@ -7,7 +7,13 @@ const reducer = (state, action) => {
       case "CREATE_USER" : {
           return {
               ...state,
-              email: action.payload.email
+              email: action.payload.email,
+              restaurant: action.payload.restaurant
+          }
+      }
+      case "REMOVE_USER" : {
+          return {
+
           }
       }
   }
