@@ -77,7 +77,7 @@ export const signOut = () => {
   auth
     .signOut()
     .then(() => alert("Sign out Succesfully!"))
-    .catch(err => console.log(err))
+    .catch(err => alert(err))
 }
 
 // used to conditionally rendering your UI
