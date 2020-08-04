@@ -1,8 +1,13 @@
 //This document will handle everything to connect with firebase database or authetication
 import firebase from "gatsby-plugin-firebase"
+import {useContext} from 'react'
 import { functions } from "firebase"
+import {UserStateContext, UserDispatchContext} from "../context/GlobalUserContext"
+
 const googleProvider = new firebase.auth.GoogleAuthProvider()
 const facebookProvider = new firebase.auth.FacebookAuthProvider()
+
+
 
 const auth = firebase.auth()
 const db = firebase.firestore()
@@ -82,12 +87,11 @@ export const signOut = () => {
 
 // used to conditionally rendering your UI
 export const monitorAuth = () => {
+  // const dispatch = useContext(UserDispatchContext)
+  // const state = useContext(UserStateContext)
+  // console.log(state)
+  // console.log(dispatch)
   auth.onAuthStateChanged(user => {
-    if (user) {
-      console.log("logged in!")
-      console.log(user.email)
-    } else {
-      console.log("logged out!")
-    }
+    return user
   })
 }

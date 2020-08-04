@@ -11,7 +11,7 @@ import "firebase/functions"
 import React from "react"
 import GlobalUserContext from "./src/context/GlobalUserContext"
 
-exports.wrapRootElement = ({ element }) => {
+export const wrapRootElement = ({ element }) => {
   return (
     <GlobalUserContext>
       {element}
