@@ -8,3 +8,14 @@
 import "firebase/auth"
 import "firebase/firestore"
 import "firebase/functions"
+
+import React from "react"
+import GlobalUserContext from "./src/context/GlobalUserContext"
+
+exports.wrapRootElement = ({ element }) => {
+  return (
+    <GlobalUserContext>
+      {element}
+    </GlobalUserContext>
+  )
+}
