@@ -86,12 +86,9 @@ export const signOut = () => {
 }
 
 // used to conditionally rendering your UI
-export const monitorAuth = () => {
-  // const dispatch = useContext(UserDispatchContext)
-  // const state = useContext(UserStateContext)
-  // console.log(state)
-  // console.log(dispatch)
+export const monitorAuth = (setUser) => {
   auth.onAuthStateChanged(user => {
-    return user
+    console.log(user.displayName)
+    setUser(user)
   })
 }

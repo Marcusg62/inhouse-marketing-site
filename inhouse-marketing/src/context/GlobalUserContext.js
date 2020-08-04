@@ -11,12 +11,15 @@ const reducer = (state, action) => {
           return {
               ...state,
               email: action.payload.email,
-              restaurant: action.payload.restaurant
+              // restaurant: action.payload.restaurant
           }
       }
       case "REMOVE_USER" : {
           return {}
       }
+
+      default:
+        return state
   }
 }
 
