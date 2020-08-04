@@ -15,14 +15,12 @@ const reducer = (state, action) => {
           }
       }
       case "REMOVE_USER" : {
-          return {
-
-          }
+          return {}
       }
   }
 }
 
-export const GlobalUserContext = ({children}) =>{
+const GlobalUserContext = ({children}) =>{
   const [state, dispatch] = useReducer(reducer, initialState)
   return (
     <UserStateContext.Provider value={state}>
@@ -33,5 +31,6 @@ export const GlobalUserContext = ({children}) =>{
   )
 }
 
-export default GlobalContextProvider
-}
+
+export default GlobalUserContext
+
