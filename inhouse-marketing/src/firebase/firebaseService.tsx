@@ -88,7 +88,6 @@ export const signOut = () => {
 // used to conditionally rendering your UI
 export const monitorAuth = (setUser) => {
   auth.onAuthStateChanged(user => {
-    console.log(user.displayName)
-    setUser(user)
+    user? setUser(user) : setUser(null)
   })
 }
