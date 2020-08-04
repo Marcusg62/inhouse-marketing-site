@@ -1,6 +1,9 @@
-import React from 'react'
+import React, {useReducer, createContext} from 'react'
 
-const initialValue = {}
+export const UserStateContext = createContext()
+export const UserDispatchContext = createContext()
+
+const initialState = {}
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -17,4 +20,18 @@ const reducer = (state, action) => {
           }
       }
   }
+}
+
+export const GlobalUserContext = ({children}) =>{
+  const [state, dispatch] = useReducer(reducer, initialState)
+  return (
+    <UserStateContext.Provider value={state}>
+      <UserDispatchContext.Provider value={dispatch}>
+        {children}
+      </UserDispatchContext.Provider>
+    </UserStateContext.Provider>
+  )
+}
+
+export default GlobalContextProvider
 }
