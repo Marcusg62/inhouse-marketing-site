@@ -1,6 +1,6 @@
 import React from "react"
 import {Link} from "gatsby"
-import createUserForm from "./createUserForm"
+import createUserForm from "../createUserForm"
 
 // import "../components/style/signUpSuccess.css"
 

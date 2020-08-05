@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
 import Layout from '../components/layout'
-import createUserForm from '../components/signupComponents/createUserForm'
 import LoggedIn from '../components/dashboard/loggedIn'
 import NotLoggedIn from '../components/dashboard/notLoggedIn'
 import {UserStateContext} from "../components/layout"
 
 
 const Dashboard = props => {
+  console.log("within dashboard")
           {/* create a dashboard to detect:
           1. if there is a user already, just logged in
           2. if there is no user, detect the state that if it comes from the submitting site,
@@ -25,7 +25,7 @@ const Dashboard = props => {
     const renderDashboard = () =>{
        return (
          <>
-         {user? <LoggedIn /> : <NotLoggedIn />}
+         {user? <LoggedIn user={user} /> : <NotLoggedIn propertiesPassed={propertiesPassed}/>}
          </>
          
        )

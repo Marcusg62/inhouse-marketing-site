@@ -1,10 +1,10 @@
 import { Formik, Form } from "formik"
 import React from 'react'
 import { TextField, Button } from "@material-ui/core"
-import { createUser_connectForm } from "../../firebase/firebaseService"
-import { createUserSchema } from './helpers/validationSchema'
+import { createUser_connectForm } from "../firebase/firebaseService"
+import { createUserSchema } from '../components/signupComponents/helpers/validationSchema'
 import { makeStyles } from "@material-ui/styles"
-import { createUserWithGoogle, createUserWithFacebook } from "../../firebase/firebaseService"
+import { createUserWithGoogle, createUserWithFacebook } from "../firebase/firebaseService"
 
 const initialValues = {
   email: "",

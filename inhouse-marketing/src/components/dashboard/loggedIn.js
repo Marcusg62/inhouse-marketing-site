@@ -3,8 +3,8 @@ import React from 'react'
 
 const LoggedIn = props => {
 
-    const renderloggedIn = () =>{
-        return <h1>Welcome, user.</h1>
+    const renderloggedIn = ({user}) =>{
+        return <h1>Welcome, {user.displayName}.</h1>
     }
  
 
