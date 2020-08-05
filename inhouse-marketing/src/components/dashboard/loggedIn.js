@@ -2,9 +2,9 @@ import React from 'react'
 
 
 const LoggedIn = ({user}) => {
-   console.log(user.displayName)
+   console.log(user)
     const renderloggedIn = () =>{
-        return <h1>Welcome, {user.displayName}.</h1>
+        return <h1>Welcome, {user.email}.</h1>
     }
  
 
