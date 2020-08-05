@@ -7,10 +7,12 @@ import "./style/style.scss"
 import "./style/util.scss"
 import {monitorAuth} from "../firebase/firebaseService"
 
-export const UserStateContext = createContext()
+export const UserStateContext = createContext(null)
+export const SetUserContext = createContext()
 
 const Layout = ({ children }) => {
   const [user, setUser] = useState()
+  console.log(user)
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -26,11 +28,13 @@ monitorAuth(setUser)
   return (
     <>
       <UserStateContext.Provider value={user}>
-        <div>
-          <SEO />
-          <Navbar />
-          <main>{children}</main>
-        </div>
+        <SetUserContext.Provider value={setUser}>
+          <div>
+            <SEO />
+            <Navbar />
+            <main>{children}</main>
+          </div>
+        </SetUserContext.Provider >
       </UserStateContext.Provider>
     </>
   )

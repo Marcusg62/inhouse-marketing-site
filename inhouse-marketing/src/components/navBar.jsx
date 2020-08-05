@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
@@ -8,7 +8,8 @@ import MonetizationOnRounded from "@material-ui/icons/MonetizationOnRounded"
 import Autorenew from "@material-ui/icons/Autorenew"
 import { Link } from "gatsby"
 import { signOut } from "../firebase/firebaseService"
-// import Button from "material-dashboard-pro-react-v1.9.0/src/components/CustomButtons/Button"
+import {UserStateContext} from "./layout"
+
 
 const drawerWidth = "100%"
 const useStyles = makeStyles(theme => ({
@@ -49,6 +50,8 @@ const useStyles = makeStyles(theme => ({
 export default function NavBar() {
   const classes = useStyles()
   const [open, setOpen] = useState(false)
+  // const user = useContext(UserStateContext)
+  // console.log(user)
   const handleClick = e => {
     setOpen(!open)
   }
@@ -57,60 +60,64 @@ export default function NavBar() {
   }
 
   return (
-    <AppBar position="static" className={classes.root}>
-      <Toolbar className={classes.navBar}>
-        <Link to="/" className={classes.link}>
-          Inhouse Orders
-        </Link>
-        
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Link to="/pricing">
-            <Button startIcon={<MonetizationOnRounded />}>Pricing</Button>
-          </Link>
-          <Link to="/how-it-works">
-            <Button startIcon={<Autorenew />}>How It Works</Button>
-          </Link>
-
-          <Button>Sign In</Button>
-          <Button onClick={signOut}>Sign Out</Button>
-          <Button>My profile</Button>
-          <MenuIcon onClick={e => handleClick(e)} />
-        </div>
-      </Toolbar>
-      <Drawer
-        className={classes.drawer}
-        anchor="top"
-        open={open}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        onClose={handleDrawerClose}
-      >
-        <List>
-          <Link to="/" className={classes.link}>
-            <ListItem button divider>
-              <ListItemText primary="Home"></ListItemText>
-            </ListItem>
-          </Link>
-
-          <Link to="/how-it-works" className={classes.link}>
-            <ListItem button divider>
-              <ListItemText primary="How it works"></ListItemText>
-            </ListItem>
-          </Link>
-
-          <Link to="/pricing" className={classes.link}>
-            <ListItem button divider>
-              <ListItemText primary="Pricing"></ListItemText>
-            </ListItem>
-          </Link>
-          <Link to="/get-started">
-            <ListItem button divider>
-              <ListItemText primary="Get started" />
-            </ListItem>
-          </Link>
-        </List>
-      </Drawer>
-    </AppBar>
+    <UserStateContext.Consumer>
+      {values => {
+        return     (
+        <AppBar position="static" className={classes.root}>
+          <Toolbar className={classes.navBar}>
+            <Link to="/" className={classes.link}>
+              Inhouse Orders
+            </Link>          
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Link to="/pricing">
+                <Button startIcon={<MonetizationOnRounded />}>Pricing</Button>
+              </Link>
+              <Link to="/how-it-works">
+                <Button startIcon={<Autorenew />}>How It Works</Button>
+              </Link>
+              <Button>Sign In</Button>
+              <Button onClick={signOut}>Sign Out</Button>
+              <Button>My profile</Button>
+              <MenuIcon onClick={e => handleClick(e)} />
+            </div>
+          </Toolbar>
+          <Drawer
+            className={classes.drawer}
+            anchor="top"
+            open={open}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            onClose={handleDrawerClose}
+          >
+            <List>
+              <Link to="/" className={classes.link}>
+                <ListItem button divider>
+                  <ListItemText primary="Home"></ListItemText>
+                </ListItem>
+              </Link>
+    
+              <Link to="/how-it-works" className={classes.link}>
+                <ListItem button divider>
+                  <ListItemText primary="How it works"></ListItemText>
+                </ListItem>
+              </Link>
+    
+              <Link to="/pricing" className={classes.link}>
+                <ListItem button divider>
+                  <ListItemText primary="Pricing"></ListItemText>
+                </ListItem>
+              </Link>
+              <Link to="/get-started">
+                <ListItem button divider>
+                  <ListItemText primary="Get started" />
+                </ListItem>
+              </Link>
+            </List>
+          </Drawer>
+      </AppBar>
+      )}
+    }
+    </UserStateContext.Consumer>
   )
 }
