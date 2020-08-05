@@ -9,7 +9,7 @@ import Autorenew from "@material-ui/icons/Autorenew"
 import { Link } from "gatsby"
 import { signOut } from "../firebase/firebaseService"
 import {UserStateContext} from "./layout"
-
+import SigninorSignupButton from "./signinButton"
 
 const drawerWidth = "100%"
 const useStyles = makeStyles(theme => ({
@@ -67,7 +67,7 @@ export default function NavBar() {
       <Button onClick={signOut}>Sign Out</Button>
       <Button><Link to="/dashboard">My profile</Link></Button> 
       </>)
-     :<Button>Sign In/Sign Up</Button> }
+     :<SigninorSignupButton /> }
     </>
     )
   }

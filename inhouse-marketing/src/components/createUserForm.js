@@ -27,7 +27,7 @@ const createUserForm = ({ restaurantID, formSubmission }) => {
   const classes = componentStyles();
   console.log(restaurantID, formSubmission)
   return (
-    <>
+    <div className={classes.form}>
       <Formik
         initialValues={initialValues}
         validationSchema={createUserSchema}
@@ -57,7 +57,7 @@ const createUserForm = ({ restaurantID, formSubmission }) => {
           }
 
           return (
-            <Form className={classes.form}>
+            <Form >
               <TextField
                 error={emailHasError}
                 label="Email"
@@ -87,9 +87,9 @@ const createUserForm = ({ restaurantID, formSubmission }) => {
           )
         }}
       </Formik>
-      <Button onClick={createUserWithGoogle} variant="contained" >Sign in with Google</Button>
+      <Button onClick={createUserWithGoogle} variant="contained" >Sign in with Google</Button><br></br>
       <Button onClick={createUserWithFacebook} variant="contained">Sign in with Facebook</Button>
-    </>
+    </div>
   )
 }
 
