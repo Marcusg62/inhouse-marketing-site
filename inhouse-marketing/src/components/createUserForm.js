@@ -19,6 +19,9 @@ const componentStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center"
   },
+  submit: {
+    margin: "1%",
+  } 
 })
 )
 
@@ -27,7 +30,7 @@ const createUserForm = ({ restaurantID, formSubmission }) => {
   const classes = componentStyles();
   console.log(restaurantID, formSubmission)
   return (
-    <div className={classes.form}>
+    <div >
       <Formik
         initialValues={initialValues}
         validationSchema={createUserSchema}
@@ -57,7 +60,7 @@ const createUserForm = ({ restaurantID, formSubmission }) => {
           }
 
           return (
-            <Form >
+            <Form className={classes.form} >
               <TextField
                 error={emailHasError}
                 label="Email"
@@ -83,12 +86,12 @@ const createUserForm = ({ restaurantID, formSubmission }) => {
                 color="primary"
               >Submit
                     </Button>
+              <Button onClick={createUserWithGoogle} variant="contained" >Sign in with Google</Button><br></br>
+              <Button onClick={createUserWithFacebook} variant="contained">Sign in with Facebook</Button>             
             </Form>
-          )
+         )
         }}
       </Formik>
-      <Button onClick={createUserWithGoogle} variant="contained" >Sign in with Google</Button><br></br>
-      <Button onClick={createUserWithFacebook} variant="contained">Sign in with Facebook</Button>
     </div>
   )
 }
