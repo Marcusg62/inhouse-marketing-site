@@ -1,19 +1,16 @@
 import React from 'react'
-import Layout from '../components/layout'
 
 
-const notLoggedIn = props => {
+const NotLoggedIn = props => {
 
-    const renderloggedIn = () =>{
-        <h1>you haven't logged in yet.</h1>
+    const renderNotLoggedIn = () =>{
+        return <h1>you haven't logged in yet.</h1>
     }
  
 
     return(
-      <Layout>
-        {renderloggedIn()}
-      </Layout>
+        renderNotLoggedIn()
     )
 }
 
-export default notLoggedIn
+export default NotLoggedIn

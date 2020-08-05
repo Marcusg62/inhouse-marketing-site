@@ -1,19 +1,16 @@
 import React from 'react'
-import Layout from '../components/layout'
 
 
-const loggedIn = props => {
+const LoggedIn = props => {
 
     const renderloggedIn = () =>{
-        <h1>Welcome, user.</h1>
+        return <h1>Welcome, user.</h1>
     }
  
 
     return(
-      <Layout>
-        {renderloggedIn()}
-      </Layout>
+        renderloggedIn()
     )
 }
 
-export default loggedIn
+export default LoggedIn

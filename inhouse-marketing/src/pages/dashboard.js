@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Layout from '../components/layout'
 import createUserForm from '../components/signupComponents/createUserForm'
+import LoggedIn from '../components/dashboard/loggedIn'
+import NotLoggedIn from '../components/dashboard/notLoggedIn'
+import {UserStateContext} from "../components/layout"
 
 
 const Dashboard = props => {
@@ -10,6 +13,8 @@ const Dashboard = props => {
           if so, add a paragraph saying congrats on registration
           3. if no user and not come from a submitted page, just ask for sign in or sign up
            */} 
+    const user = useContext(UserStateContext)
+    console.log(user)
     const propertiesPassed = value => {
       if(props.location.state){
         return props.location.state[value]
@@ -20,16 +25,7 @@ const Dashboard = props => {
     const renderDashboard = () =>{
        return (
          <>
-          {propertiesPassed("fromOnboardingForm")? 
-           <h1>You submit succesfully! Let's create a user account here.</h1> : null}
-           {/* RestaurantID would be null or a realID object depending on how the dashboard page is navigated */}
-           {createUserForm(
-             {
-             restaurantID: propertiesPassed("restaurantID"),
-             formSubmission: propertiesPassed("payload"
-             )
-            }
-            )}
+         {user? <LoggedIn /> : <NotLoggedIn />}
          </>
          
        )
