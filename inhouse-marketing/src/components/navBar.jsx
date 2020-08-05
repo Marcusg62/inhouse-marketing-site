@@ -62,9 +62,12 @@ export default function NavBar() {
   const renderMenu = () => {
     return (
     <>
-      <Button>Sign In</Button>
+      {user? (
+      <>
       <Button onClick={signOut}>Sign Out</Button>
-      <Button>My profile</Button>
+      <Button>My profile</Button> 
+      </>)
+     :<Button>Sign In</Button> }
       <MenuIcon onClick={e => handleClick(e)} />
     </>
     )
