@@ -26,7 +26,7 @@ const componentStyles = makeStyles(theme => ({
 )
 
 
-const createUserForm = ({ restaurantID, formSubmission }) => {
+const createUserForm = ({ restaurantID="", formSubmission={name:null,phone:null}}) => {
   const classes = componentStyles();
   console.log(restaurantID, formSubmission)
   return (
@@ -47,7 +47,7 @@ const createUserForm = ({ restaurantID, formSubmission }) => {
             } else if (!passwordHasError && !emailHasError) {
               // everything looks good, - call cloud function now
               try {
-                console.log('formSubmission', formSubmission)
+                console.log('formSubmission', formSubmission, 'values:',values)
 
                 let data = await createUser_connectForm(restaurantID, formSubmission, values);
                 console.log(data)

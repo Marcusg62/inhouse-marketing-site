@@ -16,7 +16,7 @@ export default function FormDialog() {
   };
 
   const handleClose = () => {
-    // setOpen(false);
+    setOpen(false);
   };
 
   return (

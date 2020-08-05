@@ -63,9 +63,14 @@ export const createUser_connectForm = async (restaurantID, formSubmission, email
 }
 
 // create users with google account
-const createUserWithEmailPw = (email, pw) => {
-  auth.createUserWithEmailAndPassword(email, pw)
-  .catch(err => alert(err))
+const createUserWithEmailPw = async (email, pw) => {
+  try{
+    await auth.createUserWithEmailAndPassword(email, pw)
+  }
+  catch(err){
+    console.log(err)
+    alert(err)
+  }
 }
 
 // create users with google account
