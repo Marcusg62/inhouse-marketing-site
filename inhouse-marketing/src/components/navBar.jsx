@@ -65,7 +65,7 @@ export default function NavBar() {
       {user? (
       <>
       <Button onClick={signOut}>Sign Out</Button>
-      <Button>My profile</Button> 
+      <Button><Link to="/dashboard">My profile</Link></Button> 
       </>)
      :<Button>Sign In</Button> }
       <MenuIcon onClick={e => handleClick(e)} />
