@@ -59,7 +59,7 @@ export default function NavBar() {
     setOpen(false)
   }
 
-  const renderMenu = () => {
+  const renderButtons = () => {
     return (
     <>
       {user? (
@@ -67,8 +67,7 @@ export default function NavBar() {
       <Button onClick={signOut}>Sign Out</Button>
       <Button><Link to="/dashboard">My profile</Link></Button> 
       </>)
-     :<Button>Sign In</Button> }
-      <MenuIcon onClick={e => handleClick(e)} />
+     :<Button>Sign In/Sign Up</Button> }
     </>
     )
   }
@@ -86,7 +85,8 @@ export default function NavBar() {
           <Link to="/how-it-works">
             <Button startIcon={<Autorenew />}>How It Works</Button>
           </Link>
-        {renderMenu()}
+          {renderButtons()}
+          <MenuIcon onClick={e => handleClick(e)} />
         </div>
       </Toolbar>
       <Drawer
