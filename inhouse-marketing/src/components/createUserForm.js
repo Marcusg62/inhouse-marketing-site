@@ -19,9 +19,6 @@ const componentStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center"
   },
-  submit: {
-    margin: "1%",
-  } 
 })
 )
 
