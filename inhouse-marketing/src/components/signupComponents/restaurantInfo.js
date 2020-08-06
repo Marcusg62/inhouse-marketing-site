@@ -1,18 +1,29 @@
 import React from "react"
-import { TextField, Paper } from '@material-ui/core'
+import { TextField} from '@material-ui/core'
 import {Button} from '@material-ui/core'
-import PlacesAutocomplete from 'react-places-autocomplete';
+import AutoCompleteAddress from './AutoCompleteAddress'
 
 
 
 
 const RestaurantInfo = props =>{
-  const { values, handleChange, next, errors, touched, handleBlur,setFieldValue} = props
+  const { values, handleChange, next, errors, touched, handleBlur,setFieldValue,setFieldTouched} = props
   const restaurantNameHasError = errors.restaurantName && touched.restaurantName
   const restaurantAddressHasError = errors.restaurantAddress && touched.restaurantAddress
   
-  const handleAutoComplete = async myAddress =>{
+  const handleAutoComplete = myAddress =>{
     setFieldValue('restaurantAddress', myAddress)
+  }
+  
+  //my custom method to handle Click
+  const handleClick = () => {
+  // if there are errors, then stay on this screen
+    if (!touched.restaurantAddress || !touched.restaurantName){
+      setFieldTouched("restaurantName")
+      setFieldTouched("restaurantAddress")
+    }else if(!restaurantNameHasError && !restaurantAddressHasError){
+      next() // if there are no errorsm then invoke next() to next step
+    } 
   }
 
   return(
@@ -29,56 +40,16 @@ const RestaurantInfo = props =>{
           name="restaurantName"
         /><br />
 
-        <PlacesAutocomplete
-           value={values.restaurantAddress}
-           onChange={selection => handleAutoComplete(selection)}
-           onSelect={selection => handleAutoComplete(selection)}
-        >
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div style={{width:"60%"}}>
-            <TextField
-              style={{width:"100%"}}
-              {...getInputProps()}
-              variant="outlined"
-              error = {restaurantAddressHasError}
-              label="Restaurant Address"
-              helperText={restaurantAddressHasError ? errors.restaurantAddress : null}
-              onBlur={handleBlur}
-              defaultValue={values.restaurantAddress}
-              name="restaurantAddress"
-            />
-            <Paper 
-              className="autocomplete-dropdown-container"
-              elevation={3}
-              variant="outlined"
-            >
-              {loading && <div>Loading...</div>}
-              {suggestions.map(suggestion => {
-                const className = suggestion.active
-                  ? 'suggestion-item--active'
-                  : 'suggestion-item';
-                // inline style for demonstration purpose
-                const style = suggestion.active
-                  ? { backgroundColor: '#5bd1d7'}
-                  : { backgroundColor: '#ffffff'};
-                return (
-                  <div
-                    {...getSuggestionItemProps(suggestion, {
-                      className,
-                      style,
-                    })}
-                  >
-                    <span style={{padding:"3% 1%"}}>{suggestion.description}</span>
-                  </div>
-                );
-              })}
-            </Paper>
-          </div>
-        )}
-        </PlacesAutocomplete>
+        <AutoCompleteAddress 
+          values={values}
+          handleAutoComplete = {handleAutoComplete}
+          errors={errors}
+          restaurantAddressHasError={restaurantAddressHasError}
+          handleBlur={handleBlur}
+        />
         <Button
-          // disabled={(!touched.restaurantAddress || !touched.restaurantName) || (restaurantNameHasError || restaurantAddressHasError)}
-          onClick={next} 
+          // disabled={ || (restaurantNameHasError || restaurantAddressHasError)}
+          onClick={handleClick} 
           variant="contained"
           color="primary"
         >Next
