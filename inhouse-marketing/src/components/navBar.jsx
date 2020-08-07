@@ -3,46 +3,19 @@ import { makeStyles } from "@material-ui/core/styles"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import MenuIcon from "@material-ui/icons/Menu"
-import { Drawer, List, ListItem, Button, ListItemText } from "@material-ui/core"
+import { Button, Box } from "@material-ui/core"
 import MonetizationOnRounded from "@material-ui/icons/MonetizationOnRounded"
 import Autorenew from "@material-ui/icons/Autorenew"
 import { Link } from "gatsby"
 import { signOut } from "../firebase/firebaseService"
 import {UserStateContext} from "./layout"
+import logo from "../images/inhouse_logo.png"
+// import Button from "material-dashboard-pro-react-v1.9.0/src/components/CustomButtons/Button"
 
 const drawerWidth = "100%"
 const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
-    backgroundColor: "#ffffff",
-    color: "black",
-    justifyContent: "space-between",
-    alignContent: "center",
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerHeader: {
-    display: "flex",
-    alignItems: "center",
-    padding: theme.spacing(0, 1),
-    ...theme.mixins.toolbar,
-    justifyContent: "flex-end",
-  },
-  navBar: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
   link: {
     textDecoration: "none",
-  },
-  modal: {
-    paddingTop: "50px",
   },
 }))
 
@@ -73,20 +46,33 @@ export default function NavBar() {
   return (
     <AppBar position="static" className={classes.root}>
       <Toolbar className={classes.navBar}>
+        <Box
+        bgcolor="primary.main"
+        component="nav"
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+      >
         <Link to="/" className={classes.link}>
-          Inhouse Orders
-        </Link>          
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Link to="/pricing">
-            <Button startIcon={<MonetizationOnRounded />}>Pricing</Button>
-          </Link>
-          <Link to="/how-it-works">
-            <Button startIcon={<Autorenew />}>How It Works</Button>
-          </Link>
-          {renderButtons()}
-          <Button><Link to="/dashboard">Dashboard</Link></Button> 
-          <MenuIcon onClick={e => handleClick(e)} />
-        </div>
+          <img
+            width="200px"
+            src={logo}
+            alt="Inhouse Orders Logo"
+            style={{ margin: "1rem", marginLeft: 0 }}
+          />
+        </Link>
+        <span style={{ display: "flex", alignItems: "center" }}>
+            <Link to="/pricing">
+              <Button startIcon={<MonetizationOnRounded />}>Pricing</Button>
+            </Link>
+            <Link to="/how-it-works">
+              <Button startIcon={<Autorenew />}>How It Works</Button>
+            </Link>
+            {renderButtons()}
+            <Button><Link to="/dashboard">Dashboard</Link></Button> 
+            <MenuIcon onClick={e => handleClick(e)} />
+        </span>
+      </Box>
       </Toolbar>
       <Drawer
         className={classes.drawer}
@@ -123,5 +109,6 @@ export default function NavBar() {
         </List>
       </Drawer>
   </AppBar>
+
   )
 }
