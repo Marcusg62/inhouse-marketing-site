@@ -3,7 +3,6 @@ import { Formik, Form } from "formik";
 import { makeStyles } from "@material-ui/core/styles";
 import RestaurantInfo from "../components/signupComponents/restaurantInfo";
 import UserInfo from "../components/signupComponents/userInfo";
-import AfterSubmit from "../components/signupComponents/afterSubmit";
 import Layout from "../components/layout";
 import { SignupSchema } from '../components/signupComponents/helpers/validationSchema'
 import { submitOnBoardingForm } from "../firebase/firebaseService";
@@ -25,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const renderStep = (step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back, signupSuccess, setFieldValue,setFieldTouched) => {
+const renderStep = (step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back, setFieldValue,setFieldTouched) => {
   switch (step) {
     case 1:
       return (
@@ -58,7 +57,7 @@ const renderStep = (step, values, errors, handleBlur, touched, handleChange, han
 
 const MultiStep = () => {
   const [step, setStep] = useState(1);
-  const [signupSuccess, setSignupSuccess] = useState(false)
+  // set restaurant so that later on we can connect restaurant with the user
   const classes = useStyles();
   const formData = {
     restaurantName: "",
@@ -81,7 +80,7 @@ const MultiStep = () => {
   const handleSubmit = payload => {
     // connect to the firebase to create a document 
     submitOnBoardingForm(payload)
-      .then(() => navigate('/dashboard',{state: { fromOnboardingForm: true }}))
+      .then((data) => navigate('/dashboard',{state: { fromOnboardingForm: true, restaurantID: data.id, payload: payload}}))
       .catch(err => alert(err.message))
 
       // navigate to /dashboard and display 'You submit succesfully! Let's create a user account here.' in dashboard based on query string
@@ -104,7 +103,7 @@ const MultiStep = () => {
           >
             {({ values, errors, handleBlur, touched, handleChange, setFieldValue, setFieldTouched}) => (
               <Form className={classes.form}>
-                {renderStep(step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back, signupSuccess, setFieldValue,setFieldTouched)}
+                {renderStep(step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back,setFieldValue,setFieldTouched)}
               </Form>
             )}
           </Formik>

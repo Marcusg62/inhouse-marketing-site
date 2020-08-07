@@ -1,19 +1,23 @@
 import React from 'react'
-import Layout from '../components/layout'
+import createUserForm from '../createUserForm'
 
 
-const notLoggedIn = props => {
-
-    const renderloggedIn = () =>{
-        <h1>you haven't logged in yet.</h1>
-    }
- 
+const NotLoggedIn = props => {
+   const {propertiesPassed} = props
 
     return(
-      <Layout>
-        {renderloggedIn()}
-      </Layout>
+      <>
+        {propertiesPassed("fromOnboardingForm")? 
+          <h1>You submit succesfully! Let's create a user account here.</h1> : null}
+          {/* RestaurantID would be null or a realID object depending on how the dashboard page is navigated */}
+          {createUserForm(
+            {
+            restaurantID: propertiesPassed("restaurantID"),
+            formSubmission: propertiesPassed("payload")
+          }
+        )}
+       </>
     )
 }
 
-export default notLoggedIn
+export default NotLoggedIn
