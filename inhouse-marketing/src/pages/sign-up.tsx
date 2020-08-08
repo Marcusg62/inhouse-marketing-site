@@ -75,7 +75,7 @@ const MultiStep = () => {
   const back = () => {
     // update state.step by minus 1 from previous state
     setStep(s => s - 1)
-  }
+  } 
 
   const handleSubmit = payload => {
     // connect to the firebase to create a document 

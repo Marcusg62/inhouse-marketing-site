@@ -1,6 +1,6 @@
 import React from 'react'
 import createUserForm from '../createUserForm'
-import firebaseuipage from '../../pages/firebaseui'
+import firebaseuipage from '../firebaseui'
 
 
 const NotLoggedIn = props => {
@@ -14,7 +14,6 @@ const NotLoggedIn = props => {
      name:propertiesPassed("formSubmission").name,
      phone: propertiesPassed("formSubmission").phone
    }
-
    :{
     restaurantID: null ,
     name: null,
@@ -34,6 +33,7 @@ const NotLoggedIn = props => {
             formSubmission: propertiesPassed("formSubmission")
           })
           } */}
+
         {firebaseuipage(dataToSubmit)}
        </>
     )
