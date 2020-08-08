@@ -5,7 +5,7 @@ import React from "react"
 
 export default function firebaseuipage() {
   var uiConfig = {
-    signInSuccessUrl: "/",
+    signInSuccessUrl: "/dashboard",
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
@@ -19,6 +19,12 @@ export default function firebaseuipage() {
         buttonColor: "#ED6A5A",
       },
     ],
+    callbacks: {
+      signInSuccessWithAuthResult: (authResult, redirectUrl) => {
+        console.log("HELLO!!!!");
+        // return false;
+      },
+    },
     tosUrl: "<your-tos-url>",
     privacyPolicyUrl: function () {
       window.location.assign("<your-privacy-policy-url>")
