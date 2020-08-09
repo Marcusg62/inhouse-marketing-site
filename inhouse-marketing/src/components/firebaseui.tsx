@@ -5,14 +5,14 @@ import React from "react"
 const firebaseFunctions = firebase.functions()
 
 
-const firebaseuipage = props => {
-  console.log("within firebase ui", props)
+const firebaseuipage = dataToSubmit => {
+  console.log("within firebase ui", dataToSubmit)
   var uiConfig = {
     callbacks: {
       signInSuccessWithAuthResult: async(authResult) => {
         const createUserWithRestaurant = firebaseFunctions.httpsCallable("create_user_with_restaurant");       
         try {
-          let result = await createUserWithRestaurant(props.dataToSubmit)
+          let result = await createUserWithRestaurant(dataToSubmit)
           return result;
         } catch (error) {
           console.error("within firebase service:", error)
