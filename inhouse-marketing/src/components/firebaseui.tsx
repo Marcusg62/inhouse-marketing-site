@@ -12,8 +12,7 @@ const firebaseuipage = dataToSubmit => {
       signInSuccessWithAuthResult: async(authResult) => {
         const createUserWithRestaurant = firebaseFunctions.httpsCallable("create_user_with_restaurant");       
         try {
-          let result = await createUserWithRestaurant(dataToSubmit)
-          return result;
+           let result = await createUserWithRestaurant(dataToSubmit)
         } catch (error) {
           console.error("within firebase service:", error)
         }
@@ -34,19 +33,6 @@ const firebaseuipage = dataToSubmit => {
       },
     ],
 
-    // callbacks: {
-    //   signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-    //     var user = authResult.user;
-    //     var credential = authResult.credential;
-    //     var isNewUser = authResult.additionalUserInfo.isNewUser;
-    //     var providerId = authResult.additionalUserInfo.providerId;
-    //     var operationType = authResult.operationType;
-    //     // Do something with the returned AuthResult.
-    //     // Return type determines whether we continue the redirect automatically
-    //     // or whether we leave that to developer to handle.
-    //     console.log(authResult)
-    //     return true;
-    //   }},
     tosUrl: "<your-tos-url>",
     privacyPolicyUrl: function () {
       window.location.assign("<your-privacy-policy-url>")
