@@ -9,7 +9,7 @@ import { monitorAuth } from "../firebase/firebaseService"
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
 
 export const UserStateContext = createContext(null)
-export const SetUserContext = createContext()
+export const SetUserContext = createContext(null)
 
 const Layout = ({ children }) => {
   const [user, setUser] = useState()

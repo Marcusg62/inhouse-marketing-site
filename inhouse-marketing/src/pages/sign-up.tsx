@@ -75,12 +75,12 @@ const MultiStep = () => {
   const back = () => {
     // update state.step by minus 1 from previous state
     setStep(s => s - 1)
-  }
+  } 
 
   const handleSubmit = payload => {
     // connect to the firebase to create a document 
     submitOnBoardingForm(payload)
-      .then((data) => navigate('/dashboard',{state: { fromOnboardingForm: true, restaurantID: data.id, payload: payload}}))
+      .then((data) => navigate('/dashboard',{state: { fromOnboardingForm: true, restaurantID: data.id, formSubmission: payload}}))
       .catch(err => alert(err.message))
 
       // navigate to /dashboard and display 'You submit succesfully! Let's create a user account here.' in dashboard based on query string

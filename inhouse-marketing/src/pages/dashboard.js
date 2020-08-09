@@ -6,7 +6,6 @@ import {UserStateContext} from "../components/layout"
 
 
 const Dashboard = props => {
-  console.log("within dashboard")
           {/* create a dashboard to detect:
           1. if there is a user already, just logged in
           2. if there is no user, detect the state that if it comes from the submitting site,
@@ -15,12 +14,15 @@ const Dashboard = props => {
            */} 
     // const user = useContext(UserStateContext)
     // console.log(user)
-    const propertiesPassed = value => {
-      if(props.location.state){
-        return props.location.state[value]
-      }
-      return null
-    }
+  let propertiesPassed;
+     
+  if(props.location.state){
+     propertiesPassed = props.location.state
+  }
+
+  console.log("propertiesPassed", propertiesPassed)
+
+    
 
     const renderDashboard = () =>{
        return (

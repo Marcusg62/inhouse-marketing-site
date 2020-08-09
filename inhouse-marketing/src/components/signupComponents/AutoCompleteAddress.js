@@ -1,6 +1,7 @@
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { TextField, Paper } from '@material-ui/core'
 import React from 'react'
+import googleLogo from '../../images/googleLogo.png'
 
 const autoCompleteAddress = props =>{
     const {values,handleAutoComplete, restaurantAddressHasError, errors, handleBlur} = props
@@ -26,7 +27,6 @@ const autoCompleteAddress = props =>{
                 <Paper 
                     className="autocomplete-dropdown-container"
                     elevation={3}
-                    variant="outlined"
                 >
                 {loading && <div>Loading...</div>}
                 {suggestions.map(suggestion => {
@@ -49,6 +49,11 @@ const autoCompleteAddress = props =>{
                     );
                 })}
                 </Paper>
+                <img
+                    src={googleLogo}
+                    alt="Powered by Logo"
+                    style={{ margin: "1rem", marginLeft: 0 }}
+                    />
             </div>
             )}
         </PlacesAutocomplete>
