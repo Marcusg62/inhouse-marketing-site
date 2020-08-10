@@ -1,13 +1,10 @@
 //This document will handle everything to connect with firebase database or authetication
 import firebase from "gatsby-plugin-firebase"
 import {useContext} from 'react'
-import { functions } from "firebase"
 import {UserStateContext, UserDispatchContext} from "../context/GlobalUserContext"
 
 const googleProvider = new firebase.auth.GoogleAuthProvider()
 const facebookProvider = new firebase.auth.FacebookAuthProvider()
-
-
 
 const auth = firebase.auth()
 const db = firebase.firestore()
@@ -50,7 +47,7 @@ export const createUser_connectForm = async (restaurantID, formSubmission, email
     restaurantID: restaurantID,
     name: formSubmission.name,
     phone: formSubmission.phone
-  }
+  }   
 
   try {
     let result = await createUserWithRestaurant(functionData)
