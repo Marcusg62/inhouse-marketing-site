@@ -25,13 +25,13 @@ const Layout = ({ children }) => {
         light: "#282838",
         main: "#3A3A51",
         dark: "#616173",
-        contrastText: "#fff",
+        contrastText: "#ffffff",
       },
       secondary: {
         light: "#a54a3e",
         main: "#ED6A5A",
         dark: "#f0877b",
-        contrastText: "#000",
+        contrastText: "#ffffff",
       },
     },
     typography: {
@@ -52,6 +52,7 @@ const Layout = ({ children }) => {
       MuiButton: {
         root: {
           borderRadius: "40px",
+          color: "#fff"
           
         },
       },

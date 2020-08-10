@@ -7,7 +7,7 @@ import Product from "../images/inhouse_product.png"
 const Home = () => {
   const getHome = () => {
     return (
-      <Box mt="8rem">
+      <Box>
         <Box style={{ maxWidth: "1500px", marginLeft: "auto" }}>
           <Grid container spacing={0}>
             <Grid item xs={12} md={6}>
@@ -58,6 +58,7 @@ const Home = () => {
                   maxWidth: "600px",
                   display: "block",
                   marginLeft: "auto",
+                  marginTop: "1rem",
                 }}
                 alt="Demo Screenshot of Online Ordering"
               />
