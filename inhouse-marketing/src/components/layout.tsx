@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useContext, useState, createContext } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Navbar from "./navBar"
 import "./style/layout.css"
@@ -8,7 +8,12 @@ import "./style/util.scss"
 import { monitorAuth } from "../firebase/firebaseService"
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
 
+export const UserStateContext = createContext(null)
+export const SetUserContext = createContext(null)
+
 const Layout = ({ children }) => {
+  const [user, setUser] = useState()
+  console.log(user)
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -62,9 +67,13 @@ const Layout = ({ children }) => {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <SEO />
-      <Navbar />
-      <main>{children}</main>
+      <UserStateContext.Provider value={user}>
+        <SetUserContext.Provider value={setUser}>
+          <SEO />
+          <Navbar />
+          <main>{children}</main>
+          </SetUserContext.Provider >
+      </UserStateContext.Provider>
     </MuiThemeProvider>
   )
 }
