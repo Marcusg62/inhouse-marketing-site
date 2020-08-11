@@ -15,6 +15,7 @@ const DashboardComponent = props => {
     // const user = useContext(UserStateContext)
     // console.log(user)
   let propertiesPassed = null;
+  console.log(props.restaurantID, props.formSubmission)
      
 //   if(props.location.state){
 //      propertiesPassed = props.location.state
