@@ -12,16 +12,7 @@ const DashboardComponent = props => {
           if so, add a paragraph saying congrats on registration
           3. if no user and not come from a submitted page, just ask for sign in or sign up
            */} 
-    // const user = useContext(UserStateContext)
-    // console.log(user)
-  let propertiesPassed = null;
   console.log(props.restaurantID, props.formSubmission)
-     
-//   if(props.location.state){
-//      propertiesPassed = props.location.state
-//   }
-
-//   console.log("propertiesPassed", propertiesPassed)
 
 //   let restaurants;
 
@@ -36,7 +27,7 @@ const DashboardComponent = props => {
         //   }else{
         //     restaurants = null
         //   }
-          return user? <LoggedIn user={user} /> : <NotLoggedIn propertiesPassed={propertiesPassed}/>
+          return user? <LoggedIn user={user} /> : <NotLoggedIn propertiesPassed={props}/>
         }}
         </UserStateContext.Consumer>
         
