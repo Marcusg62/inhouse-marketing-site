@@ -11,7 +11,12 @@ const firebaseuipage = dataToSubmit => {
     signInFlow: 'popup',    
     callbacks: {
       signInSuccessWithAuthResult: authResult => {
-       console.log(authResult)
+        const createUserWithRestaurant = firebaseFunctions.httpsCallable("create_user_with_restaurant");       
+        try {
+           createUserWithRestaurant(dataToSubmit).then((data)=>console.log(authResult))
+        } catch (error) {
+          console.error("within firebase service:", error)
+        }
         return false
       },
     },
