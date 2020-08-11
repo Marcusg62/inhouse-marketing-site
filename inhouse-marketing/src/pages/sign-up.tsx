@@ -10,6 +10,7 @@ import renderStepper from "../components/signupComponents/stepper"
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { navigate } from "gatsby";
+import Dashboard from "./dashboard";
 
 
 
@@ -80,7 +81,9 @@ const MultiStep = () => {
   const handleSubmit = payload => {
     // connect to the firebase to create a document 
     submitOnBoardingForm(payload)
-      .then((data) => navigate('/dashboard',{state: { fromOnboardingForm: true, restaurantID: data.id, formSubmission: payload}}))
+      .then((data) => {
+        return <Dashboard state = {{fromOnboardingForm: true, restaurantID: data.id, formSubmission: payload}} />
+        })
       .catch(err => alert(err.message))
 
       // navigate to /dashboard and display 'You submit succesfully! Let's create a user account here.' in dashboard based on query string
@@ -88,7 +91,9 @@ const MultiStep = () => {
 
   const myStepLable = [
     'Restaurant information',
-    'User information'];
+    'User information',
+    'Create your account'
+  ];
 
   return (
     <Layout>
