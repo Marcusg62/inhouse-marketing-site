@@ -8,19 +8,20 @@ const firebaseFunctions = firebase.functions()
 const firebaseuipage = dataToSubmit => {
   console.log("within firebase ui", dataToSubmit)
   var uiConfig = {
+  // default is redirect and that's slow
     signInFlow: 'popup',    
     callbacks: {
       signInSuccessWithAuthResult: authResult => {
         const createUserWithRestaurant = firebaseFunctions.httpsCallable("create_user_with_restaurant");       
         try {
-           createUserWithRestaurant(dataToSubmit).then((data)=>console.log(authResult))
+           createUserWithRestaurant(dataToSubmit)
+             .then((data)=>console.log(authResult.user.uid))
         } catch (error) {
           console.error("within firebase service:", error)
         }
         return false
       },
     },
-    // signInSuccessUrl:"/dashboard", 
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,

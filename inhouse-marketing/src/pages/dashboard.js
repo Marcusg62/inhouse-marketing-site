@@ -3,6 +3,7 @@ import Layout from '../components/layout'
 import LoggedIn from '../components/dashboard/loggedIn'
 import NotLoggedIn from '../components/dashboard/notLoggedIn'
 import {UserStateContext} from "../components/layout"
+import {fetchUserRestaurant} from "../firebase/firebaseService"
 
 
 const Dashboard = props => {
@@ -22,18 +23,25 @@ const Dashboard = props => {
 
   console.log("propertiesPassed", propertiesPassed)
 
-    
+  let restaurants;
 
-    const renderDashboard = () =>{
-       return (
-         <UserStateContext.Consumer>
-          {user => {
-            return user? <LoggedIn user={user} /> : <NotLoggedIn propertiesPassed={propertiesPassed}/>
-          }}
-         </UserStateContext.Consumer>
-         
-       )
-    }
+  const renderDashboard = () =>{
+      return (
+        <UserStateContext.Consumer>
+        {user => {
+          if (user){
+            // restaurants = fetchUserRestaurant(user.email)
+            console.log(user.email)
+            // fetchUserRestaurant(user.email)
+          }else{
+            restaurants = null
+          }
+          return user? <LoggedIn user={user} /> : <NotLoggedIn propertiesPassed={propertiesPassed}/>
+        }}
+        </UserStateContext.Consumer>
+        
+      )
+  }
 
     return(
       <Layout>
