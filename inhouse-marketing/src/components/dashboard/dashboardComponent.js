@@ -6,13 +6,14 @@ import {fetchUserRestaurant} from "../../firebase/firebaseService"
 
 
 const DashboardComponent = props => {
+  const {restaurantID, formSubmission} = props
           {/* create a dashboard to detect:
           1. if there is a user already, just logged in
           2. if there is no user, detect the state that if it comes from the submitting site,
           if so, add a paragraph saying congrats on registration
           3. if no user and not come from a submitted page, just ask for sign in or sign up
            */} 
-  console.log(props.restaurantID, props.formSubmission)
+  console.log(restaurantID, formSubmission)
 
 //   let restaurants;
 
@@ -27,7 +28,7 @@ const DashboardComponent = props => {
         //   }else{
         //     restaurants = null
         //   }
-          return user? <LoggedIn user={user} /> : <NotLoggedIn propertiesPassed={props}/>
+          return user? <LoggedIn user={user} /> : <NotLoggedIn restaurantID = {restaurantID} formSubmission = {formSubmission}/>
         }}
         </UserStateContext.Consumer>
         
