@@ -8,17 +8,19 @@ const firebaseFunctions = firebase.functions()
 const firebaseuipage = dataToSubmit => {
   console.log("within firebase ui", dataToSubmit)
   var uiConfig = {
+    signInFlow: 'popup',    
     callbacks: {
-      signInSuccessWithAuthResult: async(authResult) => {
+      signInSuccessWithAuthResult: authResult => {
         const createUserWithRestaurant = firebaseFunctions.httpsCallable("create_user_with_restaurant");       
         try {
-           let result = await createUserWithRestaurant(dataToSubmit)
+           createUserWithRestaurant(dataToSubmit).then((data)=>console.log(authResult))
         } catch (error) {
           console.error("within firebase service:", error)
         }
         return false
       },
     },
+    // signInSuccessUrl:"/dashboard", 
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
@@ -32,7 +34,6 @@ const firebaseuipage = dataToSubmit => {
         buttonColor: "#ED6A5A",
       },
     ],
-
     tosUrl: "<your-tos-url>",
     privacyPolicyUrl: function () {
       window.location.assign("<your-privacy-policy-url>")
@@ -41,7 +42,7 @@ const firebaseuipage = dataToSubmit => {
 
   return (
     <div>
-      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+      <StyledFirebaseAuth uiConfig={(uiConfig as any)} firebaseAuth={firebase.auth()} />
     </div>
   )
 }

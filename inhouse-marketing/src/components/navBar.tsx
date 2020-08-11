@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import MenuIcon from "@material-ui/icons/Menu"
@@ -15,10 +15,16 @@ import ListItemLink, { ListItemProps } from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
+import {UserStateContext} from "./layout"
+import { signOut } from "../firebase/firebaseService"
+
 const drawerWidth = "100%"
 
 export default function NavBar() {
   const [open, setOpen] = useState(false)
+
+  const user = useContext(UserStateContext)
+  console.log(user)
 
   const toggleDrawer = (anchor: string, newopen: boolean) => (
     event: React.KeyboardEvent | React.MouseEvent
@@ -34,6 +40,7 @@ export default function NavBar() {
 
     setOpen(newopen)
   }
+
 
   const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -74,6 +81,7 @@ export default function NavBar() {
           </Link>
 
           <Box className={classes.flatLinks}>
+            
             <Link to="/pricing">
               <Button color="primary" startIcon={<MonetizationOnRounded />}>
                 Pricing
@@ -84,6 +92,12 @@ export default function NavBar() {
                 How It Works
               </Button>
             </Link>
+  {/* for testing use */}
+            {user? (
+              <>
+              <Button onClick={signOut}>Sign Out</Button>
+              </>)
+            : null}
           </Box>
 
           <IconButton

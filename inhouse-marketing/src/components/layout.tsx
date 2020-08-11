@@ -64,7 +64,7 @@ const Layout = ({ children }) => {
     },
   })
 
-
+monitorAuth(setUser)
   return (
     <MuiThemeProvider theme={theme}>
       <UserStateContext.Provider value={user}>
