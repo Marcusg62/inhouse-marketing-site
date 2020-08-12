@@ -1,10 +1,10 @@
 import React from "react"
 import {Button} from "@material-ui/core"
 
-export const NextButton = ({handleClick}) =>{
+export const NextButton = ({handleClick, buttonStyle}) =>{
     return (
         <Button
-        // disabled={ || (restaurantNameHasError || restaurantAddressHasError)}
+        style = {buttonStyle}        
         onClick={handleClick} 
         variant="contained"
         color="primary"
