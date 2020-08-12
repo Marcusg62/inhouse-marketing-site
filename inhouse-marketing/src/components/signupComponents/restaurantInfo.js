@@ -1,8 +1,7 @@
 import React from "react"
 import { TextField} from '@material-ui/core'
-import {Button} from '@material-ui/core'
 import AutoCompleteAddress from './AutoCompleteAddress'
-
+import {NextButton} from '../signupComponents/signUpButtons'
 
 
 
@@ -47,13 +46,8 @@ const RestaurantInfo = props =>{
           restaurantAddressHasError={restaurantAddressHasError}
           handleBlur={handleBlur}
         />
-        <Button
-          // disabled={ || (restaurantNameHasError || restaurantAddressHasError)}
-          onClick={handleClick} 
-          variant="contained"
-          color="primary"
-        >Next
-        </Button>
+        
+        <NextButton handleClick={handleClick}/>
     </>
   )
 
