@@ -26,6 +26,7 @@ const UserInfo = props =>{
   //   inputRef: PropTypes.func.isRequired,
   // };
   const customSubmit = () => {
+    console.log(values)
     // if there are errors, then stay on this screen
       if (!touched.name || !touched.phone){
         setFieldTouched("name")

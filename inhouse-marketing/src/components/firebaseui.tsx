@@ -4,23 +4,27 @@ import React from "react"
 
 const firebaseFunctions = firebase.functions()
 
-
-const firebaseuipage = dataToSubmit => {
+const firebaseuipage = (dataToSubmit, isFromSubmissionForm) => {
   console.log("within firebase ui", dataToSubmit)
   var uiConfig = {
+  // default is redirect and that's slow
     signInFlow: 'popup',    
     callbacks: {
       signInSuccessWithAuthResult: authResult => {
         const createUserWithRestaurant = firebaseFunctions.httpsCallable("create_user_with_restaurant");       
         try {
-           createUserWithRestaurant(dataToSubmit).then((data)=>console.log(authResult))
+           createUserWithRestaurant(dataToSubmit)
+             .then((data)=>console.log(authResult.user.uid))
         } catch (error) {
           console.error("within firebase service:", error)
         }
-        return false
+        // so if it comes from the submission form, it will
+        // return true, which means it will redirect,
+        // else it would stay on dashboard page
+        return isFromSubmissionForm
       },
     },
-    // signInSuccessUrl:"/dashboard", 
+    signInSuccessUrl:"/",
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,

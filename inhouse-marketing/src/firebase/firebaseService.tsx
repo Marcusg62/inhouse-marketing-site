@@ -1,7 +1,5 @@
 //This document will handle everything to connect with firebase database or authetication
 import firebase from "gatsby-plugin-firebase"
-import {useContext} from 'react'
-import {UserStateContext, UserDispatchContext} from "../context/GlobalUserContext"
 
 const googleProvider = new firebase.auth.GoogleAuthProvider()
 const facebookProvider = new firebase.auth.FacebookAuthProvider()
@@ -9,6 +7,19 @@ const facebookProvider = new firebase.auth.FacebookAuthProvider()
 const auth = firebase.auth()
 const db = firebase.firestore()
 const firebaseFunctions = firebase.functions()
+
+export const fetchUserRestaurant = async (userEmail) => {
+ let result = await db.collection("onboarding_form_users").doc(userEmail).get()
+                      .then(doc => {
+                        if (doc.exists) {
+                            console.log("Document data:", doc.data());
+                        } else {
+                            // doc.data() will be undefined in this case
+                            console.log("No such document!");
+                        }})
+ console.log(result)
+ return result
+}
 
 const creditialsWithPopup = provider => {
   firebase

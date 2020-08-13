@@ -10,7 +10,7 @@ import renderStepper from "../components/signupComponents/stepper"
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { navigate } from "gatsby";
-
+import DashboardComponent from "../components/dashboard/dashboardComponent"
 
 
 const useStyles = makeStyles(theme => ({
@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const renderStep = (step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back, setFieldValue,setFieldTouched) => {
+const renderStep = (step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back, setFieldValue,setFieldTouched,restaurantID) => {
   switch (step) {
     case 1:
       return (
@@ -50,6 +50,13 @@ const renderStep = (step, values, errors, handleBlur, touched, handleChange, han
           setFieldTouched={setFieldTouched}
           handleBlur={handleBlur}
         />);
+    case 3:
+      return (
+        <DashboardComponent 
+          formSubmission = {values}
+          restaurantID = {restaurantID}
+        />
+      )
     default:
       return <RestaurantInfo errors={errors} touched={touched} />;
   }
@@ -57,6 +64,8 @@ const renderStep = (step, values, errors, handleBlur, touched, handleChange, han
 
 const MultiStep = () => {
   const [step, setStep] = useState(1);
+  const [restaurantID,setRestaurantID] = useState(null)
+  console.log("restaurant id is: ", restaurantID)
   // set restaurant so that later on we can connect restaurant with the user
   const classes = useStyles();
   const formData = {
@@ -80,7 +89,8 @@ const MultiStep = () => {
   const handleSubmit = payload => {
     // connect to the firebase to create a document 
     submitOnBoardingForm(payload)
-      .then((data) => navigate('/dashboard',{state: { fromOnboardingForm: true, restaurantID: data.id, formSubmission: payload}}))
+      .then((data) => setRestaurantID(data.id))
+      .then(()=>next())
       .catch(err => alert(err.message))
 
       // navigate to /dashboard and display 'You submit succesfully! Let's create a user account here.' in dashboard based on query string
@@ -88,7 +98,9 @@ const MultiStep = () => {
 
   const myStepLable = [
     'Restaurant information',
-    'User information'];
+    'User information',
+    'Create your account'
+  ];
 
   return (
     <Layout>
@@ -103,7 +115,7 @@ const MultiStep = () => {
           >
             {({ values, errors, handleBlur, touched, handleChange, setFieldValue, setFieldTouched}) => (
               <Form className={classes.form}>
-                {renderStep(step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back,setFieldValue,setFieldTouched)}
+                {renderStep(step, values, errors, handleBlur, touched, handleChange, handleSubmit, next, back,setFieldValue,setFieldTouched, restaurantID)}
               </Form>
             )}
           </Formik>
