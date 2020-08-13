@@ -1,8 +1,6 @@
 //This document will handle everything to connect with firebase database or authetication
 import firebase from "gatsby-plugin-firebase"
 
-const firebaseFunctions = firebase.functions()
-
 export const fetchUserRestaurant = async userEmail => {
   const db = firebase.firestore()
 
@@ -59,6 +57,7 @@ export const createUser_connectForm = async (
   //create user with email and pw
 
   await createUserWithEmailPw(emailpwVals.email, emailpwVals.password)
+  const firebaseFunctions = firebase.functions()
 
   const createUserWithRestaurant = firebaseFunctions.httpsCallable(
     "create_user_with_restaurant"
