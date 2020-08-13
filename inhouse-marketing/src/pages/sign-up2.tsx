@@ -66,6 +66,7 @@ const renderStep = (step, values, errors, handleBlur, touched, handleChange, han
     default:
       return <RestaurantInfo errors={errors} touched={touched} />;
   }
+  
 };
 
 const MultiStep = () => {
@@ -96,7 +97,7 @@ const MultiStep = () => {
     // connect to the firebase to create a document 
     submitOnBoardingForm(payload)
       .then((data) => setRestaurantID(data.id))
-      .then(()=>next())
+      .then(()=>navigate)
       .catch(err => alert(err.message))
 
       // navigate to /dashboard and display 'You submit succesfully! Let's create a user account here.' in dashboard based on query string
