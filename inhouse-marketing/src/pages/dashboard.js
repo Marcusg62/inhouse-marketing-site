@@ -5,9 +5,11 @@ import DashboardComponent from '../components/dashboard/dashboardComponent'
 
 const Dashboard = props => {
 
-    return(
-      <Layout>
-        <DashboardComponent />
-      </Layout>
+  return (
+    <Layout>
+      <DashboardComponent />
+    </Layout>
+  )
+}
 
 export default Dashboard
