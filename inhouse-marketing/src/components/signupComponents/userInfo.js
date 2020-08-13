@@ -1,8 +1,6 @@
 import React from "react"
 import { TextField, ButtonGroup } from '@material-ui/core'
 import {Button} from '@material-ui/core'
-import PropTypes from 'prop-types';
-import MaskedInput from 'react-text-mask';
 
 const UserInfo = props =>{
   const { values, handleChange, handleSubmit, back,errors, touched, handleBlur,setFieldTouched} = props

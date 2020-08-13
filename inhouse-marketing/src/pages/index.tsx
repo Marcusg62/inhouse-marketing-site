@@ -3,6 +3,8 @@ import Layout from "../components/layout"
 import "../components/style/home.css"
 import { Button, Box, Typography, Grid } from "@material-ui/core"
 import Product from "../images/inhouse_product.png"
+import { Link } from "gatsby"
+
 
 const Home = () => {
   const getHome = () => {
@@ -44,9 +46,11 @@ const Home = () => {
                   >
                     Get Started
                   </Button>{" "}
-                  <Button size="large" variant="outlined" color="secondary">
-                    How It Works
-                  </Button>{" "}
+                  <Link to="/how-it-works">
+                    <Button size="large" variant="outlined" color="secondary">
+                      How It Works
+                    </Button>
+                  </Link>{" "}
                 </Box>
               </div>
             </Grid>
@@ -66,31 +70,38 @@ const Home = () => {
           </Grid>
         </Box>
         <Box style={{ maxWidth: "1000px", margin: "auto", padding: "1rem" }}>
-          <Grid container spacing={4}> 
+          <Grid container spacing={4}>
             <Grid item xs={12} sm={4}>
-              <h2 className="sans-bold tripleHead">SEO + MOBILE FRIENDLY</h2>
+              <h2 className="sans-bold tripleHead">
+                Maximize Revenue Retention
+              </h2>
               <hr />
               <p className="txt-left m-t-8">
-                We build websites optimized for Google search results and mobile
-                devices. Your customers will be able to easily find you.{" "}
+                The IO Platform was built for revenue retention. Stop paying
+                20-30% for <i>marketing fees.</i> We have pricing options that
+                will keep customers coming back and allow you to keep your
+                profit.{" "}
+              </p>
+              <Button>See Pricing</Button>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <h2 className="sans-bold tripleHead">Minimize Hassle</h2>
+              <hr />
+              <p className="txt-left m-t-8">
+                We take care of the tech, you take care of the food. Our
+                solution is built for restaurants first. From a variety of
+                printing options to customized reporting, we're here to make
+                running your business easy.
               </p>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <h2 className="sans-bold tripleHead">ONLINE ORDERING</h2>
+              <h2 className="sans-bold tripleHead">Mobilize Data</h2>
               <hr />
               <p className="txt-left m-t-8">
-                Customers can easily view your menu and order online. We have a
-                robust online ordering platform that allows you to receive
-                orders however you like and customize your menu on the fly.
-              </p>
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <h2 className="sans-bold tripleHead">CUSTOMER FEEDBACK</h2>
-              <hr />
-              <p className="txt-left m-t-8">
-                We create a feedback loop so customers will be able to send
-                feedback directly to you. When you receive positive reviews, we
-                encourage them to post online.{" "}
+                When you sign up, we'll match you with an account specialist who
+                speaks your language and knows your industry. They will monitor
+                your business performance and make changes as needed to maximize
+                revenue.{" "}
               </p>
             </Grid>
           </Grid>
