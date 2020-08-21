@@ -15,16 +15,11 @@ import ListItemLink, { ListItemProps } from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import {UserStateContext} from "./layout"
-import { signOut } from "../firebase/firebaseService"
 
 const drawerWidth = "100%"
 
 export default function NavBar() {
   const [open, setOpen] = useState(false)
-
-  const user = useContext(UserStateContext)
-  console.log(user)
 
   const toggleDrawer = (anchor: string, newopen: boolean) => (
     event: React.KeyboardEvent | React.MouseEvent
@@ -92,12 +87,6 @@ export default function NavBar() {
                 How It Works
               </Button>
             </Link>
-  {/* for testing use */}
-            {user? (
-              <>
-              <Button onClick={signOut}>Sign Out</Button>
-              </>)
-            : null}
           </Box>
 
           <IconButton
@@ -117,18 +106,33 @@ export default function NavBar() {
         onClose={toggleDrawer("right", false)}
       >
         <List component="nav" aria-label="main mailbox folders">
+        <Link to="/how-it-works">
           <ListItemLink button>
             <ListItemIcon>
-              <InboxIcon />
+              <Autorenew />
             </ListItemIcon>
-            <ListItemText primary="Inbox" />
+            <ListItemText primary="How It Works" />
           </ListItemLink>
+          </Link>
+
+          <Link to="/pricing">
+          <ListItemLink button>
+            <ListItemIcon>
+              <MonetizationOnRounded />
+            </ListItemIcon>
+            <ListItemText primary="Pricing" />
+          </ListItemLink>
+          </Link>
+
+          <Link to="/get-started">
           <ListItemLink button>
             <ListItemIcon>
               <DraftsIcon />
             </ListItemIcon>
-            <ListItemText primary="Drafts" />
+            <ListItemText primary="Get Started" />
           </ListItemLink>
+          </Link>
+
         </List>
       </Drawer>
     </AppBar>

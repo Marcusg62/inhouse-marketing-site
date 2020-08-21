@@ -12,10 +12,11 @@ import RestaurantMenu from "@material-ui/icons/RestaurantMenu"
 import StoreMallDirectory from "@material-ui/icons/StoreMallDirectory"
 import Paper from "@material-ui/core/Paper"
 import "./style/timeline.css"
+import {Link} from 'gatsby';
 
 export default function CustomizedTimeline() {
   return (
-    <Timeline >
+    <Timeline>
       <TimelineItem>
         <TimelineSeparator>
           <TimelineDot color="secondary">
@@ -25,11 +26,13 @@ export default function CustomizedTimeline() {
         </TimelineSeparator>
         <TimelineContent>
           <Paper elevation={0} className="callout right">
-            <Chip size="small" label="GET STARTED" color="primary"/>
+            <Chip size="small" label="GET STARTED" color="primary" />
             <p>Give us your info so we can start the process. </p>
-            <Button size="small" color="primary">
-              Get Started
-            </Button>
+            <Link to="/get-started">
+              <Button size="small" color="primary">
+                Get Started
+              </Button>
+            </Link>
           </Paper>
         </TimelineContent>
       </TimelineItem>
@@ -49,9 +52,11 @@ export default function CustomizedTimeline() {
               will contact you to review your needs and create a customized plan
               to handle your online presence.{" "}
             </p>
-            <Button size="small" color="primary">
-              Learn More
-            </Button>
+            <Link to="/get-started">
+              <Button size="small" color="primary">
+                Learn More
+              </Button>
+            </Link>
           </Paper>
         </TimelineContent>
       </TimelineItem>
@@ -70,9 +75,11 @@ export default function CustomizedTimeline() {
               Your advisor will start uploading your menu and contact you to
               inquire about modifiers, times and details about your menu.{" "}
             </p>
-            <Button size="small" color="primary">
-              Learn More
-            </Button>
+            <Link to="/get-started">
+              <Button size="small" color="primary">
+                Learn More
+              </Button>
+            </Link>
           </Paper>
         </TimelineContent>
       </TimelineItem>
@@ -93,9 +100,11 @@ export default function CustomizedTimeline() {
               onboarding and payment processing forms. We will also get more
               information about your printing needs and online presence.{" "}
             </p>
-            <Button size="small" color="primary">
-              Learn More
-            </Button>
+            <Link to="/get-started">
+              <Button size="small" color="primary">
+                Learn More
+              </Button>
+            </Link>
           </Paper>
         </TimelineContent>
       </TimelineItem>

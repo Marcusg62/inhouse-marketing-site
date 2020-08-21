@@ -1,6 +1,5 @@
 import React from "react"
 import Layout from "../components/layout";
-import ContactForm from "../components/contact-form";
 // import "../components/style/getStarted.css"
 
 
@@ -12,10 +11,9 @@ const getStarted = () => {
         style={{
             "width": "100%",
             "max-width": "700px"}}>
-         <h3 className="fs-48">We are working on a great onboarding experience.</h3>
-         <p className="fs-24 m-t-24">In the mean time, contact us directly to get started. </p>
-         <p className="fs-18 sans">info@inhouseorders.io. </p>
-         <ContactForm />
+         <h3 className="fs-48">Send us an email to get started. </h3>
+         <p className="fs-24 m-t-24">For a quick response, please include your restaurant name, address and your phone number. </p>
+         <p className="fs-24 m-t-16">info@inhouseorders.io </p>
      </div>
     )}
 

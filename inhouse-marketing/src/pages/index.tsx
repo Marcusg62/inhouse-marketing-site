@@ -2,12 +2,11 @@ import React from "react"
 import Layout from "../components/layout"
 import "../components/style/home.css"
 import { Button, Box, Typography, Grid } from "@material-ui/core"
-import Product from "../images/inhouse_product.png"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
 
-
-const Home = () => {
-  const getHome = () => {
+const Home = (props) => {
+  const getHome = data => {
     return (
       <Box>
         <Box style={{ maxWidth: "1500px", marginLeft: "auto" }}>
@@ -38,14 +37,16 @@ const Home = () => {
                   restaurants.
                 </p>
                 <Box display="flex" justifyContent="left" mt="1rem" mb="1rem">
-                  <Button
-                    style={{ marginRight: "8px" }}
-                    size="large"
-                    variant="contained"
-                    color="primary"
-                  >
-                    Get Started
-                  </Button>{" "}
+                  <Link to="/get-started">
+                    <Button
+                      style={{ marginRight: "8px" }}
+                      size="large"
+                      variant="contained"
+                      color="primary"
+                    >
+                      Get Started
+                    </Button>{" "}
+                  </Link>
                   <Link to="/how-it-works">
                     <Button size="large" variant="outlined" color="secondary">
                       How It Works
@@ -54,18 +55,8 @@ const Home = () => {
                 </Box>
               </div>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <img
-                src={Product}
-                style={{
-                  width: "100%",
-                  maxWidth: "600px",
-                  display: "block",
-                  marginLeft: "auto",
-                  marginTop: "1rem",
-                }}
-                alt="Demo Screenshot of Online Ordering"
-              />
+            <Grid item xs={12} md={6}> 
+              <Img fluid={data.file.childImageSharp.fluid} />
             </Grid>
           </Grid>
         </Box>
@@ -82,7 +73,6 @@ const Home = () => {
                 will keep customers coming back and allow you to keep your
                 profit.{" "}
               </p>
-              <Button>See Pricing</Button>
             </Grid>
             <Grid item xs={12} sm={4}>
               <h2 className="sans-bold tripleHead">Minimize Hassle</h2>
@@ -118,7 +108,18 @@ const Home = () => {
     )
   }
 
-  return <Layout>{getHome()}</Layout>
+  return <Layout>{getHome(props.data)}</Layout>
 }
 
+export const query = graphql`
+  query {
+    file(relativePath: { eq: "inhouse_product.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 700) {
+          ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+  }
+`
 export default Home

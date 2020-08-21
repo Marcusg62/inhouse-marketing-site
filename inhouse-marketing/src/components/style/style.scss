@@ -21,6 +21,7 @@ body {
 }
 .text-light {
   color: #ffffff;
+
 }
 
 a {
@@ -47,6 +48,8 @@ a {
   src: url("../../assets/fonts/Sanchez_Regular.otf");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+
 }
 
 @font-face {
@@ -56,6 +59,8 @@ a {
     url("../../assets/fonts/made_evolve_sans_bold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+
 }
 @font-face {
   font-family: "made_evolve_sans_light";
@@ -64,6 +69,8 @@ a {
     url("../../assets/fonts/made_evolve_sans_light-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+
 }
 
 @font-face {
@@ -74,6 +81,8 @@ a {
       format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+
 }
 
 @font-face {
@@ -84,6 +93,8 @@ a {
       format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+
 }
 
 @font-face {
@@ -93,6 +104,8 @@ a {
     url("../../assets/fonts/made_evolve_sans_thin-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+
 }
 
 .firebaseui-idp-text {

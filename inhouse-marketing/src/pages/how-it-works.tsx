@@ -2,7 +2,6 @@ import React from "react"
 import Layout from "../components/layout"
 import Timeline from "../components/timeline"
 import { Divider, Box, Card, CardContent } from "@material-ui/core"
-import ContactForm from "../components/contactForm"
 
 const process = () => {
   const renderProcess = () => {
@@ -17,7 +16,6 @@ const process = () => {
             <Timeline></Timeline>
           </Box>
           <Box width="100%" maxWidth="400px" pt="1rem">
-            <ContactForm></ContactForm>
           </Box>
         </Box>
 
